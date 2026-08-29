@@ -6,6 +6,16 @@
 
 ---
 
+### 分发渠道
+
+| 平台 | 链接 | 用途 |
+|---|---|---|
+| GitHub（主库） | [github.com/danfeistar/house-skills-kit](https://github.com/danfeistar/house-skills-kit) | 源仓库 · Issues · PR |
+| Gitee 镜像 | [gitee.com/danfeistar/house-skills-kit](https://gitee.com/danfeistar/house-skills-kit) | 国内快速访问 |
+| ClawHub 技能市场 | [clawhub.ai/skills/house-skills-kit](https://clawhub.ai/skills/house-skills-kit) | AI Agent 一键安装 |
+| GitCode/AtomGit | 登录 gitcode.com 导入本仓库 URL 即可 | 开源中国生态 |
+
+
 ## 👤 作者
 
 **老何** — 地产行业从业 15+ 年，历任多家房企云南营销负责人，长期深耕云南及昆明地产市场，早期 AI 使用者与运用者。
