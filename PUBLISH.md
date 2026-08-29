@@ -57,3 +57,32 @@ git push -u origin master
 - issue 24h 内响应（初期 star 少，响应率=口碑）
 - 每接一个真实客户，脱敏后加一个 `examples/` 案例（最有说服力的营销）
 - 版本节奏：小版本按模块加，大版本按原型加
+
+
+## 二、国内镜像同步（Gitee + GitCode/AtomGit）
+
+### Gitee（码云）— 国内开发者第一入口
+1. 注册/登录 gitee.com（手机号即可）
+2. 右上角 **+** → **「从 GitHub/GitLab 导入仓库」** → 授权 Gitee 访问 GitHub
+3. 选择 `danfeistar/house-skills-kit` →仓库名保持 `house-skills-kit` → 开源 → **导入**
+4. 导入完成后补两件事：
+   - 仓库介绍：同 GitHub 描述
+   - 开源许可证会随仓库文件自动显示
+
+### GitCode（CSDN×华为云，已与 AtomGit 合并）
+1. 注册/登录 gitcode.com（支持 CSDN 账号直接登录）
+2. 导航栏 **「导入项目(URL)」** → GIT项目URL 填：
+   `https://github.com/danfeistar/house-skills-kit.git`
+3. 选择账户 → 公开 → **导入项目**（GitCode 会自动加速同步 GitHub 内容）
+
+### 日常同步策略
+- 主库：GitHub（改动都在这里）
+- 镜像：每发布一个版本，在 Gitee 仓库页点一次 **「同步更新」**（强制同步）；GitCode 可在设置里开自动同步
+- 或配置本地双推送（一条 push 同时更新两平台），见下方命令（需要 Gitee 令牌时找作者操作）：
+  ```
+  git remote set-url --add --push origin https://github.com/danfeistar/house-skills-kit.git
+  git remote set-url --add --push origin https://gitee.com/<用户名>/house-skills-kit.git
+  ```
+
+### 可选：阿里云 Codeup（企业客户多在阿里系时再加）
+云效 codeup.aliyun.com → 导入仓库，步骤同 GitCode。
