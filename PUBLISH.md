@@ -4,7 +4,7 @@
 
 ### 1. 建仓（网页操作）
 - 登录 GitHub → New repository → 名称 `house-skills-kit` → Public → **不要**勾选自动生成 README/LICENSE（本地已齐）
-- 描述填：`中文房产企业级 AI 技能生成骨架 · 4类企业角色 × 29个业务模块 × 一份配置生成品牌专属Skill · Apache-2.0`
+- 描述填：`中文房产 AI 技能生成骨架 · 企业与个人从业者通用 · 4类角色 × 29个业务模块 · 一份配置生成品牌专属Skill · Apache-2.0`
 
 ### 2. 推送（本地执行）
 ```bash
