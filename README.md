@@ -18,6 +18,8 @@
 
 ## 快速开始（30 秒，零外部依赖）
 
+> 🇨🇳 国内镜像：[Gitee](https://gitee.com/danfeistar/house-skills-kit)（码云，同步自 GitHub）
+
 ```bash
 git clone https://github.com/<you>/house-skills-kit.git
 cd house-skills-kit

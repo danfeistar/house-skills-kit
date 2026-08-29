@@ -62,7 +62,7 @@ git push -u origin master
 ## 二、国内镜像同步（Gitee + GitCode/AtomGit）
 
 ### Gitee（码云）— 国内开发者第一入口
-1. 注册/登录 gitee.com（手机号即可）
+1. ✅ 已完成（2026-08-29）：gitee.com/danfeistar/house-skills-kit
 2. 右上角 **+** → **「从 GitHub/GitLab 导入仓库」** → 授权 Gitee 访问 GitHub
 3. 选择 `danfeistar/house-skills-kit` →仓库名保持 `house-skills-kit` → 开源 → **导入**
 4. 导入完成后补两件事：
