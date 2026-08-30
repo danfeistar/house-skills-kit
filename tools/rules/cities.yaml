@@ -27,6 +27,16 @@ default:
     indiv_tax:
       full5_unique: 0.0           # 满五唯一免
       normal: 0.01                # 核定1%（或差额20%，提供原值时取低）
+    stamp_tax: 0.0                # 印花税率（住宅免征=0；非住宅 0.0005 双方各半）
+    fees:                         # 交易费用（真实交易不止税；均可--set覆盖）
+      agent_rate: 0.02            # 中介费率（成交价×2%演示；市场常见0.5%-3%，双方协商）
+      agent_split: both           # 中介费承担：buyer/seller/both（both=双方各半，演示默认）
+      transaction_fee: 6          # 交易手续费 元/㎡（住宅，买卖双方各半）
+      registration: 80            # 不动产登记费 元/套（买方，住宅80）
+      mortgage_reg: 80            # 抵押登记费 元/套（买方贷款时）
+      appraisal_rate: 0.001       # 贷款评估费率（贷款额×0.1%演示）
+      guarantee_rate: 0.006       # 赎楼/担保费率（卖方未清余额×0.6%演示，各城差异大）
+      land_gain_rate: 0.02        # 土地收益金（房改房/经适房：成交价×2%，卖方）
   discount:
     _as_of: "2026.08 通用演示"
     payment_discounts:            # 语义：优惠点数（0.02=一次性付款让2个点）

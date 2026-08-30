@@ -105,9 +105,10 @@ def rules_version():
     return load_all().get("rules_version", "?")
 
 
-def get_rules(domain, city=None, district=None, user_template=None):
+def get_rules(domain, city=None, district=None, user_template=None, overrides=None):
     """
     domain: 'loan' | 'tax' | 'discount'
+    overrides: 层4·命令行即时覆盖 {'键': 值}（最高优先级，不入模板）
     返回 (merged, provenance)
       merged: 合并后的参数 dict（不含 _meta）
       provenance: 每个顶层键的来源说明 dict
@@ -152,6 +153,18 @@ def get_rules(domain, city=None, district=None, user_template=None):
         # 城市级元信息
         if chunk.get("_note"):
             merged["_note"] = chunk["_note"]
+
+    # 层4：--set 即时覆盖（最高优先级；来源标注为"本次指定"）
+    # 支持 agent_rate=0.01（提升到顶层，工具内优先读取）与 fees.agent_rate=0.01（点路径写入嵌套）
+    if overrides:
+        for k, v in overrides.items():
+            merged[k] = v
+            prov[k] = {"source": "本次指定(--set)", "as_of": "即时生效"}
+            if "." in k:
+                parent, child = k.split(".", 1)
+                merged.setdefault(parent, {})
+                if isinstance(merged[parent], dict):
+                    merged[parent][child] = v
 
     merged["_provenance"] = prov
     merged["_rules_version"] = rules_version()
