@@ -46,29 +46,33 @@ def main():
 
     items = []
 
-    # ── 契税（买方）──
+    # ── 契税（买方）── 2024年16号公告：140㎡线，首二套≤140㎡均1%
     deed = rules["deed_tax"]
     if args.first == 1:
-        rate = deed["first_90le"] if A <= 90 else deed["first_90gt"]
-        basis = f"首套{'≤90㎡' if A <= 90 else '>90㎡'}"
+        rate = deed["first_140le"] if A <= 140 else deed["first_140gt"]
+        basis = f"首套{'≤140㎡' if A <= 140 else '>140㎡'}"
     elif args.first == 2:
-        rate = deed["second_90le"] if A <= 90 else deed["second_90gt"]
-        basis = f"二套{'≤90㎡' if A <= 90 else '>90㎡'}"
+        rate = deed["second_140le"] if A <= 140 else deed["second_140gt"]
+        basis = f"二套{'≤140㎡' if A <= 140 else '>140㎡'}"
     else:
         rate = deed["third_plus"]
         basis = "三套及以上"
     deed_tax = P * rate
     items.append((f"契税（买方，{basis}，{rate*100:g}%）", deed_tax))
 
-    # ── 增值税及附加（卖方）──
-    if args.held >= 2 or rules.get("vat_full2", 0) > 0 and args.held >= 2:
-        vat, vat_note = 0.0, "满2年免征"
+    # ── 增值税及附加（卖方）── 2025年17号公告：满2年免，未满2年3%含税换算
+    if args.held >= 2:
+        vat, extra, vat_note = 0.0, 0.0, "满2年免征（全国统一，含北上广深）"
     else:
         vat_rate = rules["vat_rate"]
-        extra = rules.get("vat_extra", 0.0)
-        vat = P * (vat_rate + extra)
-        vat_note = f"未满2年 {vat_rate*100:g}%" + (f"+附加{extra*100:g}%" if extra else "")
-    items.append((f"增值税及附加（卖方，{vat_note}）", vat))
+        price_in = rules.get("vat_price_in", 1)
+        vat_net = P / (1 + vat_rate) if price_in else P
+        vat = vat_net * vat_rate
+        extra = vat * rules.get("vat_extra_rate", 0.0)
+        vat_note = f"未满2年 3%征收率（含税换算）"
+    items.append((f"增值税（卖方，{vat_note}）", vat))
+    if extra > 0:
+        items.append(("  ↳ 附加税费（增值税额×12%）", extra))
 
     # ── 个税（卖方）──
     if args.held >= 5 and args.unique:
@@ -96,7 +100,7 @@ def main():
     lines.append("")
     lines.append(fmt_provenance(prov, ["deed_tax", "vat_rate", "vat_extra", "indiv_tax"]))
     lines.append("")
-    lines.append("口诀提醒：满二免增值税，满五唯一再免个税；首套90㎡内契税最优惠（1%）。")
+    lines.append("口诀提醒：满二免增值税（全国统一），满五唯一再免个税；首二套140㎡内契税均1%。")
     lines.append(COMPLIANCE)
     print("\n".join(lines))
 

@@ -13,19 +13,20 @@ default:
     downpay_min_first: 0.15       # 首套最低首付成数
     downpay_min_second: 0.25
   tax:
-    _as_of: "2026.08 通用档"
-    deed_tax:
-      first_90le: 0.01            # 首套 ≤90㎡
-      first_90gt: 0.015           # 首套 >90㎡
-      second_90le: 0.01
-      second_90gt: 0.02
-      third_plus: 0.03            # 三套及以上不限面积
-    vat_full2: 0.0                # 满2年免增值税（普通住宅演示）
-    vat_rate: 0.05                # 未满2年：5%
-    vat_extra: 0.0                # 附加税演示
+    _as_of: "2026.01.01 增值税法施行（财政部 税务总局公告2025年第17号）；契税按2024年16号公告140㎡线"
+    deed_tax:                     # 契税（2024.12.01起全国140㎡线，首二套≤140均1%）
+      first_140le: 0.01           # 首套 ≤140㎡
+      first_140gt: 0.015          # 首套 >140㎡
+      second_140le: 0.01          # 二套 ≤140㎡
+      second_140gt: 0.02          # 二套 >140㎡
+      third_plus: 0.03            # 三套及以上
+    vat_full2: 0.0                # 满2年（含）免征：全国统一含北上广深
+    vat_rate: 0.03                # 未满2年：3%征收率（2025年17号公告，自5%下调）
+    vat_price_in: 1               # 1=含税价换算：税=价÷(1+3%)×3%
+    vat_extra_rate: 0.12          # 附加=增值税额×12%（城建7%+教育3%+地方2%，市区口径演示）
     indiv_tax:
       full5_unique: 0.0           # 满五唯一免
-      normal: 0.01                # 演示按全额1%
+      normal: 0.01                # 核定1%（或差额20%，提供原值时取低）
   discount:
     _as_of: "2026.08 通用演示"
     payment_discounts:            # 语义：优惠点数（0.02=一次性付款让2个点）
