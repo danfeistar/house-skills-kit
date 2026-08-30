@@ -70,6 +70,9 @@ default:
     dti: 0.5                     # 月供收入比上限（含存量负债；多数银行0.5，宽松0.55）
     min_down_first: 0.15         # 首套最低首付（2026-05央行新政下限15%；个别城市二成）
     min_down_second: 0.25        # 二套最低首付（多城25%-30%，城市段可覆盖）
+  recognition:                   # 首套二套认定（⑥）——2024-05央行"认房不认贷"后主流口径
+    commerce_mode: no_loan       # 商贷：no_loan=认房不认贷（主流）/ home_and_loan=认房又认贷
+    fund_mode: home_and_loan     # 公积金：普遍认房又认贷+看公积金使用次数
 
 cities:
   北京:
