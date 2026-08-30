@@ -7,6 +7,7 @@
 ```bash
 python3 tools/mortgage.py --price 1500000 --downpay 30 --years 30 --city 昆明
 python3 tools/tax.py --price 1500000 --area 89 --city 昆明 --first 1 --held 6 --unique 1   # 全成本：税4项+费6项，买卖分账
+python3 tools/newhome.py --price 1500000 --area 100 --city 昆明 --first 1                 # 一手房：契税+维修基金+首年物业+配套
 python3 tools/floor.py --price 25000 --area 100 --floor 15 --top 30 --floor-adj 300 --d 98 --d 99 --pay one_time
 ```
 

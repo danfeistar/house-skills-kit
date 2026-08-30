@@ -38,6 +38,16 @@ default:
       appraisal_rate: 0.001       # 贷款评估费率（贷款额×0.1%演示）
       guarantee_rate: 0.006       # 赎楼/担保费率（卖方未清余额×0.6%演示，各城差异大）
       land_gain_rate: 0.02        # 土地收益金（房改房/经适房：成交价×2%，卖方）
+  newhome:                       # 一手房（新房）交易/交房费用（⑦-6）
+    _as_of: "2026.08 演示档：维修基金/物业费各城差异大，正式用前逐城核对"
+    repair_fund_mode: per_area    # 维修基金口径：per_area=元/㎡；per_price=总价百分比
+    repair_fund_per_area: 110     # 维修基金 元/㎡（演示：高层约90-130，各城不同）
+    repair_fund_per_price: 0.0    # 维修基金 占总价比（per_price 模式用）
+    property_fee: 2.5             # 物业费 元/㎡/月（演示：普通住宅1.5-3.5）
+    prepaid_months: 12            # 交房预收物业费月数（常见3-12，演示取整年）
+    gas_install: 2800             # 燃气初装/开户费（元；已含在房价的城市段改0）
+    agent_rate: 0                 # 一手房通常无中介费（渠道佣金开发商出）；渠道单可--set
+    transfer_tax_note: "一手房无增值税/个税（卖方是开发商，税费在开发商环节）"
   discount:
     _as_of: "2026.08 通用演示"
     payment_discounts:            # 语义：优惠点数（0.02=一次性付款让2个点）
