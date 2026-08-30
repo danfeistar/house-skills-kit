@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-工具06 · 一手房（新房）交易成本测算器（按功能分类：税费/代办代理/物业配套/金融/参考项）
+工具06 · 一手房（新房）交易成本测算器（按功能分类：税费/登记工本/物业配套/金融/参考项）
 清单序号：⑦-6｜规则来源：tools/rules/cities.yaml::newhome（三层引擎 + 层4 --set）
-功能分类（老何 08-30 指示：不动产代理/代办这一类单独成类，各项按功能归组）：
+功能分类（老何 08-30 指示+澄清：第二类是办理不动产登记时官方收取的规费）：
   【一、税费】契税
-  【二、不动产代理/代办服务】产权代办、按揭服务费
+  【二、不动产登记/工本费】登记费、证书工本费（官方规费）
   【三、物业与配套】维修基金、首年物业预存、燃气初装
   【四、金融相关（贷款时）】评估费、抵押登记
   【五、参考项】装修、车位（不计必缴）
@@ -47,7 +47,8 @@ def main():
     ap.add_argument("--months", type=float, default=None, help="交房预存物业费月数（覆盖规则库）")
     ap.add_argument("--decor", type=float, default=0, help="装修预算（元，参考项）")
     ap.add_argument("--parking", type=float, default=0, help="车位价（元，参考项）")
-    ap.add_argument("--no-agent-service", action="store_true", help="不计算不动产代办服务费（自办产权）")
+    ap.add_argument("--extra-certs", type=int, default=0, dest="extra_certs",
+                    help="加发不动产权证书本数（共有/车位加证，每本工本费读规则库）")
     ap.add_argument("--city"); ap.add_argument("--district")
     ap.add_argument("--template")
     ap.add_argument("--set", action="append", default=[], metavar="KEY=VALUE",
@@ -89,19 +90,18 @@ def main():
         (f"契税（{basis}，{rate*100:g}%）", P*rate, "与二手同档（140㎡线）"),
     ]))
 
-    # ═══【二、不动产代理/代办服务】═══
-    agent_items = []
-    if not args.no_agent_service:
-        asv = rules.get("agent_service", 0)
-        if asv:
-            agent_items.append(("产权证/过户代办服务费", asv, "开发商或第三方代办机构收，自办可免"))
-    if args.loan > 0:
-        msr = rules.get("mortgage_service_rate", 0.0)
-        if msr:
-            agent_items.append((f"按揭服务费（贷款额×{msr*100:g}%）", args.loan*msr,
-                                "部分银行/项目收，有的免费（--set mortgage_service_rate=0）"))
-    if agent_items:
-        groups.append(("【二、不动产代理/代办服务】（功能类：办证·按揭手续，可自办替代）", agent_items))
+    # ═══【二、不动产登记/工本费（官方规费）】═══
+    # 老何 08-30 澄清：是办理不动产登记时官方收取的规费（登记费/工本费），不是代办服务费
+    reg_items = []
+    reg = rules.get("registration", 80)
+    reg_items.append((f"不动产登记费（{reg:g} 元/套）", reg,
+                      "住宅80元/套，非住宅550元/套；含首本《不动产权证书》"))
+    n_certs = args.extra_certs
+    if n_certs > 0:
+        cf = rules.get("cert_fee_extra", 10)
+        reg_items.append((f"证书工本费（加发 {n_certs} 本 × {cf:g} 元）", n_certs*cf,
+                          "首本免费；共有/车位等加发每本10元"))
+    groups.append(("【二、不动产登记/工本费】（办理不动产权证时官方收取）", reg_items))
 
     # ═══【三、物业与配套】═══
     prop_items = []
@@ -158,11 +158,11 @@ def main():
     lines.append(f"  ★ 必缴合计（一~四类）≈ {W(subtotal)} 元（占房价 {subtotal/P*100:.2f}%）")
     if ref_total:
         lines.append(f"  含参考项 ≈ {W(subtotal + ref_total)} 元")
-    lines.append("  各项均可 --set 覆盖或城市段覆盖；代办/按揭服务费可自办省下——以购房合同与交房公示为准。")
+    lines.append("  各项均可 --set 覆盖或城市段覆盖；以购房合同、交房公示与登记机构收费依据为准。")
 
     lines.append("")
-    keys = ["repair_fund_mode", "property_fee", "gas_install", "agent_service",
-            "mortgage_service_rate"] + sorted(overrides.keys())
+    keys = ["repair_fund_mode", "property_fee", "gas_install", "registration",
+            "cert_fee_extra"] + sorted(overrides.keys())
     lines.append(fmt_provenance(prov, [k for k in keys if k in prov]))
     lines.append(COMPLIANCE)
     print("\n".join(lines))
