@@ -1,0 +1,185 @@
+# house-skills-kit 工具库 · 城市规则库（数据外置：改政策改这里，不改代码）
+# 铁律：每个数字标注 as_of（数据时点）；正式使用前须逐城核对当地官方最新公告
+rules_version: "2026.08.30-r1"
+as_of_note: "本文件所有档位为演示档位，正式使用前须逐城核对官方最新公告"
+
+default:
+  loan:
+    _as_of: "2026.08 通用档"
+    commercial_rate: 0.031        # 商贷首套参考利率（演示值）
+    provident_rate: 0.025         # 公积金 5 年以上首套
+    max_years_commercial: 30
+    max_years_provident: 30
+    downpay_min_first: 0.15       # 首套最低首付成数
+    downpay_min_second: 0.25
+  tax:
+    _as_of: "2026.08 通用档"
+    deed_tax:
+      first_90le: 0.01            # 首套 ≤90㎡
+      first_90gt: 0.015           # 首套 >90㎡
+      second_90le: 0.01
+      second_90gt: 0.02
+      third_plus: 0.03            # 三套及以上不限面积
+    vat_full2: 0.0                # 满2年免增值税（普通住宅演示）
+    vat_rate: 0.05                # 未满2年：5%
+    vat_extra: 0.0                # 附加税演示
+    indiv_tax:
+      full5_unique: 0.0           # 满五唯一免
+      normal: 0.01                # 演示按全额1%
+  discount:
+    _as_of: "2026.08 通用演示"
+    payment_discounts:            # 语义：优惠点数（0.02=一次性付款让2个点）
+      one_time: 0.02
+      mortgage: 0.0
+    development_discounts:       # 语义：支付因子（0.98=98折）演示
+      open_discount: 0.98
+      fullpay_quick: 0.99
+    order_note: "先楼层与付款等价格型修正，后营销型折扣依次相乘（折上折）"
+
+cities:
+  北京:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.030
+    tax:
+      vat_extra: 0.006
+      _note: "增值税附加演示口径"
+    districts:
+      通州:
+        _note: "副中心政策演示样例（须核对）"
+  上海:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.030
+  深圳:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.030
+  广州:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.030
+  昆明:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  成都:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  武汉:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  杭州:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.030
+  南京:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  重庆:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  西安:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  郑州:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  长沙:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  合肥:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  青岛:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  宁波:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  福州:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  厦门:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.030
+  天津:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  苏州:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.030
+  无锡:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  佛山:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.030
+  东莞:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.030
+  昆山:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.030
+  珠海:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.030
+  南宁:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  贵阳:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  太原:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  南昌:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  石家庄:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  长春:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  哈尔滨:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  大连:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  兰州:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
+  乌鲁木齐:
+    _as_of: "2026.08 演示档"
+    loan:
+      commercial_rate: 0.031
