@@ -40,8 +40,12 @@ default:
       land_gain_rate: 0.02        # 土地收益金（房改房/经适房：成交价×2%，卖方）
   newhome:                       # 一手房（新房）交易/交房费用（⑦-6）
     _as_of: "2026.08 演示档：维修基金/物业费各城差异大，正式用前逐城核对"
-    repair_fund_mode: per_area    # 维修基金口径：per_area=元/㎡；per_price=总价百分比
-    repair_fund_per_area: 110     # 维修基金 元/㎡（演示：高层约90-130，各城不同）
+    repair_fund_mode: per_area    # 维修基金口径：per_area=按类型表元/㎡；per_price=总价百分比
+    repair_fund_table:            # 首期维修资金 元/㎡（按物业类型；城市段可整表覆盖）
+      walkup: 90                  # 多层/不带电梯（≤6层无电梯，演示档）
+      elevator: 110               # 高层/带电梯（≥7层，演示档）
+      nonresidential: 130         # 非住宅（小区内商铺/车位等，演示档）
+    repair_fund_per_area: 110     # 兼容旧参数：类型表缺档时的兜底
     repair_fund_per_price: 0.0    # 维修基金 占总价比（per_price 模式用）
     property_fee: 2.5             # 物业费 元/㎡/月（演示：普通住宅1.5-3.5）
     prepaid_months: 12            # 交房预收物业费月数（常见3-12，演示取整年）
@@ -84,9 +88,15 @@ cities:
     loan:
       commercial_rate: 0.030
   昆明:
-    _as_of: "2026.08 演示档"
+    _as_of: "2026.08 演示档；维修资金档=老何08-30口径"
     loan:
       commercial_rate: 0.031
+    newhome:
+      _as_of: "昆明维修资金：高层90元/㎡（老何08-30口径）；其他类型为演示值待核对"
+      repair_fund_table:
+        walkup: 90                  # 多层/不带电梯（演示值，昆明官方档待核对）
+        elevator: 90                # 高层/带电梯=90元/㎡（老何08-30口径）
+        nonresidential: 130         # 非住宅（演示值待核对）
   成都:
     _as_of: "2026.08 演示档"
     loan:
@@ -155,6 +165,12 @@ cities:
     _as_of: "2026.08 演示档"
     loan:
       commercial_rate: 0.030
+    newhome:
+      _as_of: "南海区2026-09-01起维修资金新标准（佛山全市其他区可能不同）"
+      repair_fund_table:
+        walkup: 85                  # 住宅不带电梯 85元/㎡（南海区通告，2026-09-01施行）
+        elevator: 91                # 住宅带电梯 91元/㎡（南海区通告，2026-09-01施行）
+        nonresidential: 107         # 非住宅 107元/㎡（南海区通告，2026-09-01施行）
   东莞:
     _as_of: "2026.08 演示档"
     loan:

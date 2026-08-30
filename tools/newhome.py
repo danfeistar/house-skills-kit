@@ -49,6 +49,9 @@ def main():
     ap.add_argument("--parking", type=float, default=0, help="车位价（元，参考项）")
     ap.add_argument("--extra-certs", type=int, default=0, dest="extra_certs",
                     help="加发不动产权证书本数（共有/车位加证，每本工本费读规则库）")
+    ap.add_argument("--ptype", choices=["elevator", "walkup", "nonres"], default="elevator",
+                    help="物业类型：elevator=高层带电梯(默认) walkup=多层不带电梯 nonres=非住宅，"
+                         "维修基金按类型取城市档")
     ap.add_argument("--city"); ap.add_argument("--district")
     ap.add_argument("--template")
     ap.add_argument("--set", action="append", default=[], metavar="KEY=VALUE",
@@ -105,13 +108,20 @@ def main():
 
     # ═══【三、物业与配套】═══
     prop_items = []
+    # 维修基金：按物业类型查城市档（repair_fund_table），缺档回退 repair_fund_per_area
+    table = rules.get("repair_fund_table") or {}
+    key_map = {"walkup": "walkup", "nonres": "nonresidential", "elevator": "elevator"}
+    rfa = table.get(key_map[args.ptype]) or rules.get("repair_fund_per_area", 110)
+    ptype_cn = {"elevator": "高层/带电梯", "walkup": "多层/不带电梯", "nonres": "非住宅"}[args.ptype]
     if rules.get("repair_fund_mode") == "per_price":
         rf = P * rules.get("repair_fund_per_price", 0.0)
         rf_note = f"总价×{rules.get('repair_fund_per_price',0)*100:g}%"
     else:
-        rfa = rules.get("repair_fund_per_area", 110)
         rf = A * rfa
-        rf_note = f"{rfa:g} 元/㎡"
+        # 档位来源：城市段覆盖过类型表=城市档，否则默认档（看规则来源，不看表是否存在）
+        tbl_src = (prov.get("repair_fund_table") or {}).get("source", "全国默认档")
+        src_tag = f"城市档[{tbl_src}]" if tbl_src != "全国默认档" else "默认档"
+        rf_note = f"{ptype_cn} {rfa:g} 元/㎡·{src_tag}"
     prop_items.append((f"住宅专项维修基金（{rf_note}，交房前缴存）", rf, "一次性缴，入专项账户"))
     pf = rules.get("property_fee", 2.5)
     prop_items.append((f"物业费预存（{pf:g} 元/㎡/月 × {month:g} 个月）", A*pf*month,
@@ -161,8 +171,8 @@ def main():
     lines.append("  各项均可 --set 覆盖或城市段覆盖；以购房合同、交房公示与登记机构收费依据为准。")
 
     lines.append("")
-    keys = ["repair_fund_mode", "property_fee", "gas_install", "registration",
-            "cert_fee_extra"] + sorted(overrides.keys())
+    keys = ["repair_fund_table", "repair_fund_mode", "property_fee", "gas_install",
+            "registration", "cert_fee_extra"] + sorted(overrides.keys())
     lines.append(fmt_provenance(prov, [k for k in keys if k in prov]))
     lines.append(COMPLIANCE)
     print("\n".join(lines))
