@@ -5,18 +5,21 @@
 ## 快速上手（零依赖，任何电脑有 Python3 即可跑）
 
 ```bash
-python3 tools/mortgage.py --price 1500000 --downpay 30 --years 30 --city 昆明
-python3 tools/tax.py --price 1500000 --area 89 --city 昆明 --first 1 --held 6 --unique 1   # 全成本：税4项+费6项，买卖分账
-python3 tools/newhome.py --price 1500000 --area 100 --city 昆明 --first 1                 # 一手房：契税+维修基金+首年物业+配套
-python3 tools/floor.py --price 25000 --area 100 --floor 15 --top 30 --floor-adj 300 --d 98 --d 99 --pay one_time
+python3 skills/calc-toolkit/mortgage.py --price 1500000 --downpay 30 --years 30 --city 昆明
+python3 skills/calc-toolkit/tax.py --price 1500000 --area 89 --city 昆明 --first 1 --held 6 --unique 1   # 全成本：税4项+费6项，买卖分账
+python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --paid 24 --prepay 200000    # 提前还款：缩期vs减月供对比
+python3 skills/calc-toolkit/newhome.py --price 1500000 --area 100 --city 昆明 --first 1                 # 一手房：契税+维修基金+首年物业+配套
+python3 skills/calc-toolkit/floor.py --price 25000 --area 100 --floor 15 --top 30 --floor-adj 300 --d 98 --d 99 --pay one_time
 ```
 
-## 三件工具
+## 五件工具
 
 | # | 工具 | 脚本 | 覆盖场景 |
 |---|---|---|---|
 | ⑦-1 | 房贷月供计算器 | `mortgage.py` | 商贷/公积金/组合贷 × 等额本息/本金，利息对比、首付档校验 |
 | ⑦-2 | 二手房税费计算器 | `tax.py` | 契税（首二套×面积段）/增值税（满二）/个税（满五唯一、差额取低），买卖双方分担 |
+| ⑦-3 | 提前还款测算器 | `prepay.py` | 缩期 vs 减月供双方案对比、违约金提示（规则库可配）、最低还款额提示、结清场景识别 |
+| ⑦-6 | 一手房成本测算器 | `newhome.py` | 契税/维修基金（按城市×物业类型三档）/首年物业/登记工本费/贷款杂费，五类分组 |
 | ⑦-15 | 楼层差价+折扣叠加 | `floor.py` | 楼层加价 × 营销折上折 × 付款折扣，**折扣真伪校验**（防"先涨后折"）、邻层速查 |
 
 ## 规则三层引擎（核心设计）

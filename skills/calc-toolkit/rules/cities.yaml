@@ -63,6 +63,9 @@ default:
       open_discount: 0.98
       fullpay_quick: 0.99
     order_note: "先楼层与付款等价格型修正，后营销型折扣依次相乘（折上折）"
+  prepayment:                    # 提前还款（⑦-3）常见行情默认档——各银行以借款合同为准
+    penalty_rate: 0.0            # 违约金率（还款满1-3年多为0；未满期或部分银行收已还本金1%等）
+    min_prepay: 10000            # 最低提前还款额（多数银行1万起、按万取整）
 
 cities:
   北京:
@@ -91,6 +94,9 @@ cities:
     _as_of: "2026.08 演示档；维修资金档=老何08-30口径"
     loan:
       commercial_rate: 0.031
+    prepayment:                    # 提前还款（⑦-3）——各银行差异大，以下为常见行情，--set可覆盖
+      penalty_rate: 0.0            # 违约金率（还款满1-3年多为0；未满期或部分银行收已还本金1%等）
+      min_prepay: 10000            # 最低提前还款额（多数银行1万起、按万取整）
     newhome:
       _as_of: "昆明维修资金：高层90元/㎡（老何08-30口径）；其他类型为演示值待核对"
       repair_fund_table:
