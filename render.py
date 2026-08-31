@@ -120,8 +120,19 @@ def main():
     ap.add_argument("--out", default=os.path.join(KIT_DIR, "output"))
     args = ap.parse_args()
 
+    # 安全加固 1.4.1：输出一律收敛到仓库 output/ 内，杜绝写到包目录之外
+    out_root = os.path.realpath(args.out)
+    repo_root = os.path.realpath(KIT_DIR)
+    if os.path.commonpath([out_root, repo_root]) != repo_root:
+        ap.error(f"--out 必须位于仓库目录内: {out_root}")
+
     with open(args.config, encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
+
+    # 安全加固 1.4.1：--config 同样限定在仓库内读取
+    cfg_real = os.path.realpath(args.config)
+    if os.path.commonpath([cfg_real, repo_root]) != repo_root:
+        ap.error(f"--config 必须位于仓库目录内: {cfg_real}")
 
     text, manifest, missing = render(cfg)
     outdir = os.path.join(args.out, manifest["name"])

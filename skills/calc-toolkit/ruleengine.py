@@ -173,19 +173,29 @@ def get_rules(domain, city=None, district=None, user_template=None, overrides=No
     return merged, prov
 
 
-# ---------- 层3：我的模板 ----------
+# ---------- 层3：我的模板（安全加固 1.4.1：路径一律收敛在 my_templates/ 内） ----------
+def _safe_tpl_name(name):
+    """模板名只允许字母/数字/中文/下划线/连字符，剥离一切路径成分，杜绝目录穿越。"""
+    base = os.path.basename(str(name).replace("\\", "/")).strip()
+    if base in ("", ".", "..") or not all(c.isalnum() or c in "_-" or ord(c) > 127 for c in base):
+        raise ValueError(f"模板名只能含中文/字母/数字/下划线/连字符: {name!r}")
+    return base
+
+
 def save_user_template(name, payload):
+    base = _safe_tpl_name(name)
     os.makedirs(USER_TPL_DIR, exist_ok=True)
-    path = os.path.join(USER_TPL_DIR, f"{name}.json")
+    path = os.path.join(USER_TPL_DIR, f"{base}.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
     return path
 
 
 def _load_user_template(name):
-    path = name if os.path.isabs(name) else os.path.join(USER_TPL_DIR, f"{name}.json")
-    if not os.path.exists(path) and os.path.exists(name):
-        path = name
+    base = _safe_tpl_name(name)
+    path = os.path.join(USER_TPL_DIR, f"{base}.json")
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"我的模板不存在: {base}（用 --save-template 先保存）")
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
