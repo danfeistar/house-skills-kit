@@ -56,6 +56,7 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | [sales-objection-handling 客户异议处理](skills/sales-objection-handling/) | "太贵了/再看看/怕烂尾/会不会降价"四大高频异议：顾虑分支拆解→应对话术→禁语清单，附 6 条二级异议 | 置业顾问、销售经理 |
 | [sales-closing-sop 算价与逼定 SOP](skills/sales-closing-sop/) | 算价五要素→让步梯度→购买信号判读→五级逼定→成交收口，含红白脸与审批链团队配合 | 置业顾问、销售主管/经理 |
 | [sales-reception-sop 接待与需求挖掘 SOP](skills/sales-reception-sop/) | 首访动线（品牌→区域→项目→户型）+ 七维需求提问树 + 客户画像复述 + 带看匹配与交接 | 置业顾问、销售主管、案场负责人 |
+| [sales-lead-grading 判客与跟进 SOP](skills/sales-lead-grading/) | ABC判客分级四维标准 + 分级跟进节奏 + 掉客三层挽回 + 复判升级与归属仲裁 | 置业顾问、销售主管、案场负责人 |
 
 > 数字类话术（月供/得房率/楼间距等）与 [calc-toolkit](skills/calc-toolkit/) 联动计算，不口算。
 
@@ -64,7 +65,7 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | 身份 | Skill | 状态 |
 |---|---|---|
 | 全身份通用 | `calc-toolkit` 公共计算工具包 | ✅ 已发布（19 件工具收官） |
-| 一手销售/案场 | `sales-talk-library` / `sales-objection-handling` / `sales-closing-sop` / `sales-reception-sop` 案场销售线四技能 | ✅ 已发布（L1 主干 4/7，判客跟进/按揭/开盘待建） |
+| 一手销售/案场 | `sales-talk-library` / `sales-objection-handling` / `sales-closing-sop` / `sales-reception-sop` / `sales-lead-grading` 案场销售线五技能 | ✅ 已发布（L1 主干 5/7，按揭/开盘待建） |
 | 购房客户 | C端购房顾问（资格/选筹/谈判） | 排期 |
 | 房开案场 | 案场销售顾问 | 排期 |
 | 一手销售 | 置业顾问跟客助手（含判客/话术） | 排期 |
