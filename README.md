@@ -58,6 +58,7 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | [sales-reception-sop 接待与需求挖掘 SOP](skills/sales-reception-sop/) | 首访动线（品牌→区域→项目→户型）+ 七维需求提问树 + 客户画像复述 + 带看匹配与交接 | 置业顾问、销售主管、案场负责人 |
 | [sales-lead-grading 判客与跟进 SOP](skills/sales-lead-grading/) | ABC判客分级四维标准 + 分级跟进节奏 + 掉客三层挽回 + 复判升级与归属仲裁 | 置业顾问、销售主管、案场负责人 |
 | [sales-mortgage-sop 按揭问题应对 SOP](skills/sales-mortgage-sop/) | 贷款口径统一 + 资质预判分流 + 六类高频问题（流水/征信/首付缺口/首付来源/收入形态/公积金）路径与话术 + 批贷进度跟进 + 合规红线汇总 | 置业顾问、按揭专员、销售主管 |
+| [sales-opening-sop 开盘执行 SOP](skills/sales-opening-sop/) | 盘前客户梳理与预登记 + 认筹转认购 + 开盘日七环节选房动线 + 选房规则口径表 + 五类应急预案 + 盘后转化与复盘 | 置业顾问、案场负责人、开盘执行团队 |
 
 > 数字类话术（月供/得房率/楼间距等）与 [calc-toolkit](skills/calc-toolkit/) 联动计算，不口算。
 
@@ -66,7 +67,7 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | 身份 | Skill | 状态 |
 |---|---|---|
 | 全身份通用 | `calc-toolkit` 公共计算工具包 | ✅ 已发布（19 件工具收官） |
-| 一手销售/案场 | `sales-talk-library` / `sales-objection-handling` / `sales-closing-sop` / `sales-reception-sop` / `sales-lead-grading` 案场销售线五技能 | ✅ 已发布（L1 主干 6/7，开盘待建） |
+| 一手销售/案场 | `sales-talk-library` / `sales-objection-handling` / `sales-closing-sop` / `sales-reception-sop` / `sales-lead-grading` 案场销售线五技能 | ✅ 已发布（L1 主干 7/7 完成） |
 | 购房客户 | C端购房顾问（资格/选筹/谈判） | 排期 |
 | 房开案场 | 案场销售顾问 | 排期 |
 | 一手销售 | 置业顾问跟客助手（含判客/话术） | 排期 |
