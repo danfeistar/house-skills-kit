@@ -20,6 +20,7 @@ license: Apache-2.0
 | **sales-lead-grading 判客与跟进 SOP** | `skills/sales-lead-grading/` | 置业顾问/销售主管：ABC判客分级、跟进节奏、掉客挽回与归属仲裁 |
 | **sales-mortgage-sop 按揭问题应对 SOP** | `skills/sales-mortgage-sop/` | 置业顾问/按揭专员：资质预判分流、六类高频按揭问题路径与话术、合规红线 |
 | **sales-opening-sop 开盘执行 SOP** | `skills/sales-opening-sop/` | 置业顾问/案场负责人/开盘执行团队：盘前梳理预登记、认筹转认购、开盘日七环节选房动线、规则口径、五类应急预案、盘后转化 |
+| **presale-marketing-sop 蓄客期营销动作清单** | `skills/presale-marketing-sop/` | 策划/营销负责人/自媒体运营：节点倒排节奏、暖场/拓客/圈层/认筹预热动作库、自媒体蓄客专节（定位/日历/线索闭环）、四级漏斗复盘、合规红线 |
 | 购房顾问（排期） | `skills/`（待建） | 购房客户：资格/选筹/谈判 |
 | 案场销售顾问（排期） | `skills/`（待建） | 房开案场 |
 | 经纪人作业助手（排期） | `skills/`（待建） | 二手经纪人 |

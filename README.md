@@ -59,6 +59,7 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | [sales-lead-grading 判客与跟进 SOP](skills/sales-lead-grading/) | ABC判客分级四维标准 + 分级跟进节奏 + 掉客三层挽回 + 复判升级与归属仲裁 | 置业顾问、销售主管、案场负责人 |
 | [sales-mortgage-sop 按揭问题应对 SOP](skills/sales-mortgage-sop/) | 贷款口径统一 + 资质预判分流 + 六类高频问题（流水/征信/首付缺口/首付来源/收入形态/公积金）路径与话术 + 批贷进度跟进 + 合规红线汇总 | 置业顾问、按揭专员、销售主管 |
 | [sales-opening-sop 开盘执行 SOP](skills/sales-opening-sop/) | 盘前客户梳理与预登记 + 认筹转认购 + 开盘日七环节选房动线 + 选房规则口径表 + 五类应急预案 + 盘后转化与复盘 | 置业顾问、案场负责人、开盘执行团队 |
+| [presale-marketing-sop 蓄客期营销动作清单](skills/presale-marketing-sop/) | 节点倒排四阶段节奏 + 暖场/拓客/圈层/认筹预热动作库 + 自媒体蓄客专节（项目号定位/内容日历/线索承接闭环）+ 四级漏斗与费效复盘 + 合规红线 | 策划、营销负责人、自媒体运营、拓客团队 |
 
 > 数字类话术（月供/得房率/楼间距等）与 [calc-toolkit](skills/calc-toolkit/) 联动计算，不口算。
 
