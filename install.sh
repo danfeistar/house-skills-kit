@@ -26,13 +26,31 @@ if [[ ! -f "$SKILL_DIR/SKILL.md" || ! -f "$SKILL_DIR/manifest.json" ]]; then
   exit 1
 fi
 
+# ---------- 路径护栏(安全:限定仓库内产物) ----------
+SKILL_DIR_REAL="$(cd "$SKILL_DIR" && pwd)"
+case "$SKILL_DIR_REAL" in
+  "$KIT_DIR"|"$KIT_DIR"/*) : ;;  # 仓库内,放行
+  *) echo "[x] 安全限制: SKILL_DIR 必须位于仓库目录内(如 output/*),不接受外部路径"; exit 1 ;;
+esac
+
 # ---------- 多 Agent 目录探测 ----------
 detect_agent_home() {
-  # 1) 显式传入
-  if [[ -n "$AGENT_HOME" ]]; then echo "$AGENT_HOME"; return 0; fi
-  # 2) 环境变量(兼容常见约定)
+  # 1) 显式传入(安全:仅接受 $HOME 下的路径)
+  if [[ -n "$AGENT_HOME" ]]; then
+    case "$AGENT_HOME" in
+      "$HOME"|"$HOME"/*) echo "$AGENT_HOME"; return 0 ;;
+      *) echo "[x] 安全限制: 安装目标仅允许 \$HOME 下的目录" >&2; return 1 ;;
+    esac
+  fi
+  # 2) 环境变量(兼容常见约定;安全:仅接受 $HOME 下的路径)
   for v in HERMES_HOME OPENCLAW_HOME AGENT_HOME; do
-    if [[ -n "${!v:-}" && -d "${!v}" ]]; then echo "${!v}/skills"; return 0; fi
+    val="${!v:-}"
+    if [[ -n "$val" && -d "$val" ]]; then
+      case "$val" in
+        "$HOME"|"$HOME"/*) echo "$val/skills"; return 0 ;;
+        *) : ;;  # 非 $HOME 下的环境变量路径,跳过不采用
+      esac
+    fi
   done
   # 3) 常见路径探测
   local candidates=(
