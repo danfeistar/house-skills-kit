@@ -64,6 +64,7 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | [activity-organization-sop 营销活动组织 SOP](skills/activity-organization-sop/) | 单场活动目标定义 + 活动选型矩阵 + 一页简报模板 + 预算审批 + 执行清单 + 现场分工动线 + 线索承接首触 + 72小时复盘闭环 | 策划、营销负责人、案场负责人 |
 | [marketing-materials-sop 营销物料与示范区优化 SOP](skills/marketing-materials-sop/) | 物料任务分类 + 一页设计简报 + 信息与合规审核 + 示范区四层巡检 + 改进台账 + 版本管理 + 客户反馈复盘 | 策划、示范区负责人、置业顾问 |
 | [engineering-progress-broadcast-sop 工程进度与品质播报 SOP](skills/engineering-progress-broadcast-sop/) | 工程资料采集 + 节点对照 + 品质工艺表达 + 延期沟通 + 敏感问题升级 + 发布检查 + 复盘归档 | 工程部、策划、品牌、案场客服 |
+| [pricing-incentive-release-sop 价格策略与优惠释放 SOP](skills/pricing-incentive-release-sop/) | 价格事实核验 + 房源/客户分层 + 优惠梯度 + 审批变更 + 案场执行 + 台账复盘 + 合规红线 | 营销负责人、案场负责人、置业顾问 |
 
 > 数字类话术（月供/得房率/楼间距等）与 [calc-toolkit](skills/calc-toolkit/) 联动计算，不口算。
 
