@@ -18,6 +18,7 @@ skill:
   modules:
     - ad-compliance             # 案场物料合规必挂
     - marketing-review          # 月度营销复盘与经营看板
+    - media-lead-growth         # 媒介投放与线索增长
 
 adapter:
   id: mock

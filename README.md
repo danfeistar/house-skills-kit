@@ -68,7 +68,8 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | [channel-collaboration-sop 渠道协同与分销管理 SOP](skills/channel-collaboration-sop/) | 渠道准入分层 + 政策培训 + 报备查重 + 带访交接 + 判客仲裁 + 佣金对账 + 渠道复盘 | 渠道负责人、项目营销、案场、财务 |
 | [customer-advocacy-referral-sop 客户口碑与老带新运营 SOP](skills/customer-advocacy-referral-sop/) | 服务反馈分层 + 口碑内容授权 + 推荐触发 + 线索登记 + 权益兑现 + 客诉隔离 + 复盘 | 客户关系、营销、案场、内容 |
 | [launch-integrated-campaign-sop 节点开盘整合营销 SOP](skills/launch-integrated-campaign-sop/) | 开盘战役简报 + 九格协同 + 节点倒排 + 资产包 + 整合承接 + 全员演练 + 开盘衔接 + 盘后复盘 | 营销负责人、策划 |
-| `marketing-review` 月度营销复盘与经营看板模块 | `template/modules/marketing-review.md.tmpl` | 策划/营销：口径锁定、漏斗与房源结构、来源费效、异常升级、行动台账 |
+| `marketing-review` 月度营销复盘与经营看板模块 | `template/modules/marketing-review.md.tmpl` | 策划/营销：口径锁定、漏斗与房源结构、来源费效、异常升级与行动台账 |
+| `media-lead-growth` 媒介投放与线索增长模块 | `template/modules/media-lead-growth.md.tmpl` | 策划/营销：付费投放、预算止损、素材测试、线索归因、质量优化与承接交接 |
 
 > 数字类话术（月供/得房率/楼间距等）与 [calc-toolkit](skills/calc-toolkit/) 联动计算，不口算。
 
@@ -88,7 +89,7 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 ## 两条生产线
 
 1. **`skills/` 直发技能**：每个子目录独立 SKILL.md，发布到 ClawHub 各自成技能，可独立安装。
-2. **`template/` 品牌生成骨架**：4 类角色原型（购房者/房开销售/经纪经纪人/渠道分销）× 30 业务模块，一份品牌配置即可生成专属顾问技能：
+2. **`template/` 品牌生成骨架**：4 类角色原型（购房者/房开销售/经纪经纪人/渠道分销）× 31 业务模块，一份品牌配置即可生成专属顾问技能：
 
 ```bash
 python3 render.py --config examples/kunming/kunming.buy.yaml --out output/my-brand/
