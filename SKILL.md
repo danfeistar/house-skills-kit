@@ -28,6 +28,7 @@ license: Apache-2.0
 | **pricing-incentive-release-sop 价格策略与优惠释放 SOP** | `skills/pricing-incentive-release-sop/` | 营销负责人/案场负责人/置业顾问：价格事实核验、房源与客户分层、优惠梯度、审批变更、案场执行、台账复盘与合规红线 |
 | **channel-collaboration-sop 渠道协同与分销管理 SOP** | `skills/channel-collaboration-sop/` | 渠道负责人/项目营销/案场/财务：渠道准入分层、政策培训、报备查重、带访交接、判客仲裁、佣金对账与渠道复盘 |
 | **customer-advocacy-referral-sop 客户口碑与老带新运营 SOP** | `skills/customer-advocacy-referral-sop/` | 客户关系/营销/案场/内容：服务反馈分层、口碑内容授权、推荐触发、线索登记、权益兑现、客诉隔离与复盘 |
+| **launch-integrated-campaign-sop 节点开盘整合营销 SOP** | `skills/launch-integrated-campaign-sop/` | 营销负责人/策划：开盘战役简报、九格协同、节点倒排、资产包、整合承接、全员演练、开盘衔接与盘后复盘 |
 | 购房顾问（排期） | `skills/`（待建） | 购房客户：资格/选筹/谈判 |
 | 案场销售顾问（排期） | `skills/`（待建） | 房开案场 |
 | 经纪人作业助手（排期） | `skills/`（待建） | 二手经纪人 |
