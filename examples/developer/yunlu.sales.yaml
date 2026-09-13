@@ -17,6 +17,7 @@ skill:
   version: "0.1.0"
   modules:
     - ad-compliance             # 案场物料合规必挂
+    - marketing-review          # 月度营销复盘与经营看板
 
 adapter:
   id: mock
