@@ -66,6 +66,7 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | [engineering-progress-broadcast-sop 工程进度与品质播报 SOP](skills/engineering-progress-broadcast-sop/) | 工程资料采集 + 节点对照 + 品质工艺表达 + 延期沟通 + 敏感问题升级 + 发布检查 + 复盘归档 | 工程部、策划、品牌、案场客服 |
 | [pricing-incentive-release-sop 价格策略与优惠释放 SOP](skills/pricing-incentive-release-sop/) | 价格事实核验 + 房源/客户分层 + 优惠梯度 + 审批变更 + 案场执行 + 台账复盘 + 合规红线 | 营销负责人、案场负责人、置业顾问 |
 | [channel-collaboration-sop 渠道协同与分销管理 SOP](skills/channel-collaboration-sop/) | 渠道准入分层 + 政策培训 + 报备查重 + 带访交接 + 判客仲裁 + 佣金对账 + 渠道复盘 | 渠道负责人、项目营销、案场、财务 |
+| [customer-advocacy-referral-sop 客户口碑与老带新运营 SOP](skills/customer-advocacy-referral-sop/) | 服务反馈分层 + 口碑内容授权 + 推荐触发 + 线索登记 + 权益兑现 + 客诉隔离 + 复盘 | 客户关系、营销、案场、内容 |
 
 > 数字类话术（月供/得房率/楼间距等）与 [calc-toolkit](skills/calc-toolkit/) 联动计算，不口算。
 
