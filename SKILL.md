@@ -24,6 +24,7 @@ license: Apache-2.0
 | **competitive-intel-sop 竞品踩盘与市场监控** | `skills/competitive-intel-sop/` | 策划/营销负责人/市调岗：竞品A/B/C分级、六模块现场采集、百分制打分与竞品预判、四指标周监控三源交叉、月度竞品报告、反踩盘纪律与合规红线 |
 | **activity-organization-sop 营销活动组织 SOP** | `skills/activity-organization-sop/` | 策划/营销负责人/案场负责人：活动目标定义、活动选型矩阵、一页简报、预算审批、执行清单、线索承接与复盘闭环、合规红线 |
 | **marketing-materials-sop 营销物料与示范区优化 SOP** | `skills/marketing-materials-sop/` | 策划/示范区负责人/置业顾问：物料任务分类、设计简报、信息与合规审核、示范区四层巡检、改进台账、版本管理与反馈复盘 |
+| **engineering-progress-broadcast-sop 工程进度与品质播报 SOP** | `skills/engineering-progress-broadcast-sop/` | 工程部/策划/品牌/案场客服：工程资料采集、节点对照、品质工艺表达、延期沟通、敏感问题升级、发布检查与复盘归档 |
 | 购房顾问（排期） | `skills/`（待建） | 购房客户：资格/选筹/谈判 |
 | 案场销售顾问（排期） | `skills/`（待建） | 房开案场 |
 | 经纪人作业助手（排期） | `skills/`（待建） | 二手经纪人 |
