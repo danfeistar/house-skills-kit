@@ -61,6 +61,8 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | [sales-opening-sop 开盘执行 SOP](skills/sales-opening-sop/) | 盘前客户梳理与预登记 + 认筹转认购 + 开盘日七环节选房动线 + 选房规则口径表 + 五类应急预案 + 盘后转化与复盘 | 置业顾问、案场负责人、开盘执行团队 |
 | [presale-marketing-sop 蓄客期营销动作清单](skills/presale-marketing-sop/) | 节点倒排四阶段节奏 + 暖场/拓客/圈层/认筹预热动作库 + 自媒体蓄客专节（项目号定位/内容日历/线索承接闭环）+ 四级漏斗与费效复盘 + 合规红线 | 策划、营销负责人、自媒体运营、拓客团队 |
 | [competitive-intel-sop 竞品踩盘与市场监控](skills/competitive-intel-sop/) | 竞品A/B/C分级与踩盘频次 + 现场六模块采集清单（价值主张/展示面/销售力/价格/销控/服务）+ 百分制打分表与竞品预判 + 供应成交去化价格四指标周监控（三源交叉）+ 月度竞品报告模板 + 反踩盘纪律与合规红线 | 策划、营销负责人、市调岗、置业顾问 |
+| [activity-organization-sop 营销活动组织 SOP](skills/activity-organization-sop/) | 单场活动目标定义 + 活动选型矩阵 + 一页简报模板 + 预算审批 + 执行清单 + 现场分工动线 + 线索承接首触 + 72小时复盘闭环 | 策划、营销负责人、案场负责人 |
+| [marketing-materials-sop 营销物料与示范区优化 SOP](skills/marketing-materials-sop/) | 物料任务分类 + 一页设计简报 + 信息与合规审核 + 示范区四层巡检 + 改进台账 + 版本管理 + 客户反馈复盘 | 策划、示范区负责人、置业顾问 |
 
 > 数字类话术（月供/得房率/楼间距等）与 [calc-toolkit](skills/calc-toolkit/) 联动计算，不口算。
 
