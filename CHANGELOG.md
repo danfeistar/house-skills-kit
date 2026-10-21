@@ -35,6 +35,7 @@
 
 ### 修复
 
+- **`status.py` 在 Python 3.8–3.11 上完全不可用**：源码里用了 `f"{(...)}"` 这种 PEP 701 嵌套同引号写法，只有 Python 3.12+ 肯认，3.8–3.11 直接 `SyntaxError`——而 README 承诺的是 Python 3.8+，等于这个工具在绝大多数环境里根本跑不起来。已改为先取变量再格式化，并补 CI 冒烟与 Py3.8 环境实测。顺带修掉契税提示里"首套套/150㎡"的重复字。
 - **三个计算器在 Python 3.13+ 上直接崩溃**（`capacity.py` / `efficiency.py` / `prepay.py`）：Python 3.13 起 `argparse` 会校验 help 文本里的 `%`，中文括号紧贴裸 `%` 触发 `ValueError: badly formed help string`，导致**任何调用**（不只是 `--help`）都报错。已把裸 `%` 统一转义为 `%%`，并新增 CI 步骤逐个跑 `--help` 防回归。
 - **`render.py` 强制依赖 PyYAML**：与"零依赖"的承诺不符，没装 PyYAML 的人克隆下来跑不通第一个命令。现改为「装了 PyYAML 就用它，没装就用内置 `mini_yaml` 兜底」。两套解析器对仓库内全部 YAML（含 35 城规则库）逐键比对一致，两份示例的渲染产物逐字节一致。
 
