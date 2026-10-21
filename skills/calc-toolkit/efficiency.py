@@ -55,7 +55,7 @@ def main() -> None:
                     help="area=面积链 / price=单价换算 / compare=双盘比价（默认 area）")
     ap.add_argument("--gross", type=float, default=None, help="建筑面积（㎡）")
     ap.add_argument("--inner", type=float, default=None, help="套内建面（㎡，与--gross二选一，另一个反推）")
-    ap.add_argument("--rate", type=float, default=None, help="得房率%（如 78；缺省按 --type 档位）")
+    ap.add_argument("--rate", type=float, default=None, help="得房率%%（如 78；缺省按 --type 档位）")
     ap.add_argument("--type", default=None,
                     help="物业类型: garden洋房/plate板楼/tower塔楼/super超高层/apartment公寓")
     ap.add_argument("--use-coef", type=float, default=None, help="使用面积系数（套内建面×该系数，默认88%%）")
