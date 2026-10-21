@@ -36,6 +36,9 @@ jobs:
           python3 skills/calc-toolkit/fund.py --balances 50000 --months 36 --price 1500000 --city 昆明 > /dev/null
           python3 skills/calc-toolkit/efficiency.py --gross 100 --inner 78 > /dev/null
           python3 skills/calc-toolkit/holding.py --area 89 --property 2.5 --price 1500000 > /dev/null
+          python3 skills/calc-toolkit/status.py --city 昆明 --area 150 > /dev/null
+          python3 skills/calc-toolkit/status.py --city 昆明 --local-homes 1 --area 89 > /dev/null
+          python3 skills/calc-toolkit/rent.py --price 1500000 --rent 3500 > /dev/null
           echo "计算器冒烟通过"
 
       - name: 每个工具的 --help 都能跑（防 argparse 字符串回归）
