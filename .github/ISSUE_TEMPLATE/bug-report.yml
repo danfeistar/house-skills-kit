@@ -1,0 +1,57 @@
+name: 内容错误 / 工具问题
+description: 事实过时、口径不对、算错了、跑不通——用这个
+title: "[问题] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请尽量给出**文件路径 + 原文/命令 + 期望结果**，这样能一次修好。
+        政策类问题请附发布主体与时间（我们只认可核实的口径）。
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 问题类型
+      options:
+        - 计算工具结果不对（calc-toolkit）
+        - 政策/数字口径过时
+        - 技能内容有错或表述不当
+        - 文档缺漏 / 示例跑不通
+        - 渲染器（render.py）问题
+        - 其他
+    validations:
+      required: true
+
+  - type: input
+    id: where
+    attributes:
+      label: 涉及文件
+      placeholder: skills/calc-toolkit/tax.py 或 skills/buyer-first-home-advisor/playbook.md 第 42 行
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现方式 / 原文
+      description: 命令请直接贴，能跑的更好；内容类问题贴原文片段。
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expect
+    attributes:
+      label: 期望结果
+      description: 你认为正确的数字/口径/表述是什么？有出处请附上。
+    validations:
+      required: true
+
+  - type: input
+    id: env
+    attributes:
+      label: 运行环境（工具类问题填）
+      placeholder: Python 3.12 / macOS 14；或 Windows 11 + WSL
+    validations:
+      required: false

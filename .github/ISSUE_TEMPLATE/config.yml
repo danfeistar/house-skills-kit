@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 使用前先看文档
+    url: https://github.com/danfeistar/house-skills-kit#已发布技能
+    about: 技能清单、计算工具用法与快速上手都在 README 里，先看一眼能少走很多弯路。
+  - name: 商业合作与定制
+    url: https://github.com/danfeistar
+    about: 需要为房企/经纪公司/销售团队定制 AI 工具与工作流，走作者主页联系。

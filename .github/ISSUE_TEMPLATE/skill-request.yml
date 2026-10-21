@@ -1,0 +1,53 @@
+name: 技能需求 / 场景建议
+description: 说说你的真实场景和卡点，我们判断该做成什么技能
+title: "[需求] "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        这个仓库只做"一线真能用"的东西，所以**越具体的场景越好**。
+        请不要贴真实客户资料、手机号、合同扫描件。
+
+  - type: textarea
+    id: role
+    attributes:
+      label: 你是谁 / 什么身份
+      description: 例如：房企营销负责人、案场销售经理、二手经纪人、首次购房者、房产自媒体。
+      placeholder: 我在昆明做一手房案场销售管理
+    validations:
+      required: true
+
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 具体场景
+      description: 什么情况下会遇到？多久遇到一次？现在怎么处理的？
+      placeholder: 每次开盘前要手工整理客户意向落位表，30 多组客户要花 3 小时…
+    validations:
+      required: true
+
+  - type: textarea
+    id: pain
+    attributes:
+      label: 卡点在哪
+      description: 现在做法最难受的一点是什么？错一次代价多大？
+    validations:
+      required: true
+
+  - type: textarea
+    id: expect
+    attributes:
+      label: 你希望 AI 帮你做到什么
+      description: 描述"输入什么 → 输出什么"就够，不用想技术实现。
+      placeholder: 输入客户登记表和房号表，输出一版可直接打印的落位表与冲突提示
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 确认
+      options:
+        - label: 我确认这不是违规需求（如规避限购、伪造流水、爬取个人信息）
+          required: true

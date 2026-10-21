@@ -1,5 +1,13 @@
 # house-skills-kit 🏠
 
+[English](README.en.md) | 中文
+
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.8%2B-3776ab.svg)](https://www.python.org/)
+[![Skills](https://img.shields.io/badge/skills-18-brightgreen.svg)](skills/)
+[![Dependencies](https://img.shields.io/badge/dependencies-zero-success.svg)](#已发布技能)
+[![CI](https://github.com/danfeistar/house-skills-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/danfeistar/house-skills-kit/actions/workflows/validate.yml)
+
 **房产 AI 技能仓库 —— 按身份分 Skill，按需取用。**
 
 为房地产行业的七类角色提供开箱即用的 AI 技能（Skill）：房开企业、经纪公司、渠道分销公司、购房者/业主、二手经纪人、一手销售人员、房产自媒体博主。每个身份场景对应一个独立 Skill，`skills/` 目录下各技能均含完整提示词与配套工具，可单独安装、单独发布。
@@ -48,6 +56,14 @@ python3 skills/calc-toolkit/tax.py --price 1500000 --area 89 --city 昆明 --fir
 python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --paid 24 --prepay 200000
 ```
 
+## 🏠 购房客户线技能（C 端自住购房者）
+
+| 技能 | 内容 | 适合谁 |
+|---|---|---|
+| [buyer-first-home-advisor 首购购房顾问](skills/buyer-first-home-advisor/) | 需求澄清七问（把"内需不明"问到清楚）+ 场景排除法 → 预算三线法（舒适线/上限线/极限线）→ 资格与首套三口径自查 → 片区五维筛选 + 楼盘百分制打分卡 → 一手五看法 + 二手 15 项验房清单 → 议价筹码与合同十条 → 贷款方案与提前还款 → 收房验房与税费 → 八类常见坑与红线 → 三句话收口（买/不买/再看） | 首次购房的个人与家庭、帮忙出主意的亲友、做 C 端咨询的经纪人 |
+
+> 全流程数字走 [calc-toolkit](skills/calc-toolkit/)：可买总价、月供、首套认定、公积金额度、税费、得房率、提前还款，不口算；政策数字一律"按当地当期口径现查"，技能本身不提供任何城市的具体数字。
+
 ## 🏢 案场销售线技能（一手销售/案场团队）
 
 | 技能 | 内容 | 适合谁 |
@@ -79,12 +95,39 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 |---|---|---|
 | 全身份通用 | `calc-toolkit` 公共计算工具包 | ✅ 已发布（19 件工具收官） |
 | 一手销售/案场 | `sales-talk-library` / `sales-objection-handling` / `sales-closing-sop` / `sales-reception-sop` / `sales-lead-grading` 案场销售线五技能 | ✅ 已发布（L1 主干 7/7 完成） |
-| 购房客户 | C端购房顾问（资格/选筹/谈判） | 排期 |
+| 购房客户 | `buyer-first-home-advisor` 首购购房顾问（需求澄清/预算三线/选筹打分/看房验真/议价签约/收房税费） | ✅ 已发布 |
 | 房开案场 | 案场销售顾问 | 排期 |
 | 一手销售 | 置业顾问跟客助手（含判客/话术） | 排期 |
 | 二手经纪人 | 经纪人作业助手 | 排期 |
 | 渠道分销 | 渠道管理助手 | 排期 |
 | 房产自媒体 | 内容创作助手 | 排期 |
+
+## 仓库结构
+
+```
+skills/            # 18 个独立技能，每个自带 SKILL.md（+ README.md / 正文 / 可选工具）
+  calc-toolkit/    #   公共计算工具包 + 35 城规则库（rules/cities.yaml）
+  buyer-*/         #   购房客户（C 端）技能
+  sales-*/         #   案场销售线技能
+template/
+  archetypes/      # 4 类角色原型（购房者 / 房开销售 / 经纪经纪人 / 渠道分销）
+  modules/         # 31 个业务模块，按需拼装
+examples/          # 可直接跑的示例配置（昆明端到端示例、开发商示例）
+adapters/mock/     # 模拟数据适配器，接真实房源源时替换
+render.py          # 由品牌配置 + 模板渲染出专属技能
+mini_yaml.py       # 零依赖 YAML 子集解析器（没装 PyYAML 也能跑 render.py）
+tools/             # 仓库自检脚本（结构与文档校验）
+```
+
+## 自检与贡献
+
+```bash
+python3 tools/validate_skills.py     # 结构与文档自检：技能目录/frontmatter/链接/疑似密钥/编译
+```
+
+CI（GitHub Actions）在每次 push 与 PR 上跑：技能自检 → 计算器冒烟 → 每个工具 `--help` → 零依赖渲染 → 渲染可复现性。
+
+欢迎 Issue 与 PR，写之前先看 [CONTRIBUTING.md](CONTRIBUTING.md)；版本变更见 [CHANGELOG.md](CHANGELOG.md)。
 
 ## 两条生产线
 
