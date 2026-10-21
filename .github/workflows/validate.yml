@@ -1,0 +1,65 @@
+name: validate
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  self-check:
+    name: 仓库自检 (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.8", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: 技能结构与文档自检
+        run: python3 tools/validate_skills.py
+
+      - name: 计算器冒烟（零依赖，直接跑）
+        run: |
+          set -e
+          python3 skills/calc-toolkit/mortgage.py --price 1500000 --downpay 30 --years 30 --city 昆明 > /dev/null
+          python3 skills/calc-toolkit/capacity.py --income 12000,8000 --cash 400000 --debts 1500 --city 昆明 > /dev/null
+          python3 skills/calc-toolkit/tax.py --price 1500000 --area 89 --city 昆明 --first 1 --held 6 --unique 1 > /dev/null
+          python3 skills/calc-toolkit/newhome.py --price 1500000 --area 89 --city 昆明 > /dev/null
+          python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --paid 24 --prepay 200000 > /dev/null
+          python3 skills/calc-toolkit/fund.py --balances 50000 --months 36 --price 1500000 --city 昆明 > /dev/null
+          python3 skills/calc-toolkit/efficiency.py --gross 100 --inner 78 > /dev/null
+          python3 skills/calc-toolkit/holding.py --area 89 --property 2.5 --price 1500000 > /dev/null
+          echo "计算器冒烟通过"
+
+      - name: 每个工具的 --help 都能跑（防 argparse 字符串回归）
+        run: |
+          set -e
+          for f in skills/calc-toolkit/*.py; do
+            python3 "$f" --help > /dev/null
+          done
+          echo "--help 全部通过"
+
+      - name: render 管线（不装任何依赖）
+        run: |
+          set -e
+          python3 render.py --config examples/kunming/kunming.buy.yaml --out output/ci-sample/
+          test -f output/ci-sample/kunming-buy/SKILL.md
+          python3 render.py --config examples/developer/yunlu.sales.yaml --out output/ci-sample-dev/
+          test -f output/ci-sample-dev/yunlu-buy/SKILL.md
+          echo "渲染通过（零依赖）"
+
+      - name: 两份渲染产物可复现（同配置跑两次结果一致，除去时间戳）
+        run: |
+          set -e
+          python3 render.py --config examples/kunming/kunming.buy.yaml --out output/ci-again/
+          diff <(grep -v generated_at output/ci-sample/kunming-buy/manifest.json) \
+               <(grep -v generated_at output/ci-again/kunming-buy/manifest.json)
+          diff output/ci-sample/kunming-buy/SKILL.md output/ci-again/kunming-buy/SKILL.md
+          echo "可复现"
