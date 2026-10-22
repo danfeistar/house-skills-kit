@@ -4,7 +4,7 @@
 
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8%2B-3776ab.svg)](https://www.python.org/)
-[![Skills](https://img.shields.io/badge/skills-18-brightgreen.svg)](skills/)
+[![Skills](https://img.shields.io/badge/skills-19-brightgreen.svg)](skills/)
 [![Dependencies](https://img.shields.io/badge/dependencies-zero-success.svg)](#已发布技能)
 [![CI](https://github.com/danfeistar/house-skills-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/danfeistar/house-skills-kit/actions/workflows/validate.yml)
 
@@ -64,6 +64,14 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 
 > 全流程数字走 [calc-toolkit](skills/calc-toolkit/)：可买总价、月供、首套认定、公积金额度、税费、得房率、提前还款，不口算；政策数字一律"按当地当期口径现查"，技能本身不提供任何城市的具体数字。
 
+## 🏗 开发商顾问线（甲方营销决策）
+
+| 技能 | 内容 | 适合谁 |
+|---|---|---|
+| [developer-sales-advisor 开发商销售顾问](skills/developer-sales-advisor/) | 12 项必取数据 + 五维体检（量/价/客/竞/队）一页纸诊断 → 三档结论（可接/需改造/劝退）→ 价格与优惠体系（价差表 + **三层优惠结构**：明折定锚 / 暗折转化 / 资源置换保表 + 释放四段节奏 + 破价防控五条）→ 渠道配比与费效（佣金结佣 + 四类风控）→ **去化卡壳五症处方**（来访不足/转化不足/结构错配/价格抗性/竞品挤压，每症带指标阈值、验证周期与止损）→ 预算 5-3-2 与止损 → 甲方周报与经营预警（六指标 + 三档建议 + 预警红线） | 开发商营销负责人、代理公司项目负责人、销售顾问、投前研判岗 |
+
+> 这一线只做决策层的判断与取舍；执行层动作（接待/判客/话术/逼定/开盘）见下方案场销售线，测算一律走 [calc-toolkit](skills/calc-toolkit/)。
+
 ## 🏢 案场销售线技能（一手销售/案场团队）
 
 | 技能 | 内容 | 适合谁 |
@@ -96,7 +104,7 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | 全身份通用 | `calc-toolkit` 公共计算工具包 | ✅ 已发布（19 件工具收官） |
 | 一手销售/案场 | `sales-talk-library` / `sales-objection-handling` / `sales-closing-sop` / `sales-reception-sop` / `sales-lead-grading` 案场销售线五技能 | ✅ 已发布（L1 主干 7/7 完成） |
 | 购房客户 | `buyer-first-home-advisor` 首购购房顾问（需求澄清/预算三线/选筹打分/看房验真/议价签约/收房税费） | ✅ 已发布 |
-| 房开案场 | 案场销售顾问 | 排期 |
+| 房开案场 | `developer-sales-advisor` 开发商销售顾问（甲方决策线：研判/价格/渠道/处方/预算/汇报） | ✅ 已发布 |
 | 一手销售 | 置业顾问跟客助手（含判客/话术） | 排期 |
 | 二手经纪人 | 经纪人作业助手 | 排期 |
 | 渠道分销 | 渠道管理助手 | 排期 |
@@ -105,7 +113,7 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 ## 仓库结构
 
 ```
-skills/            # 18 个独立技能，每个自带 SKILL.md（+ README.md / 正文 / 可选工具）
+skills/            # 19 个独立技能，每个自带 SKILL.md（+ README.md / 正文 / 可选工具）
   calc-toolkit/    #   公共计算工具包 + 35 城规则库（rules/cities.yaml）
   buyer-*/         #   购房客户（C 端）技能
   sales-*/         #   案场销售线技能

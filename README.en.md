@@ -50,6 +50,14 @@ national default → city (e.g. Kunming high-rise maintenance fund 90 CNY/㎡) �
 |---|---|---|
 | [buyer-first-home-advisor](skills/buyer-first-home-advisor/) | Seven-question needs clarification → three-line budget (comfort / ceiling / extreme) → eligibility self-check → district five-factor screen + weighted 100-point project scorecard → new-home "five checks" + 15-point resale inspection → negotiation leverage + ten contract clauses → loan options and early repayment → handover and taxes → eight common traps → three-sentence decision summary | First-time buyers, families advising them, agents running buyer-side advisory |
 
+### 🏗 Developer advisory line (decision layer for developers)
+
+| Skill | What it covers |
+|---|---|
+| [developer-sales-advisor](skills/developer-sales-advisor/) | 12 must-have data points and a five-dimension health check (volume / price / demand / competition / team) on one page, three verdicts (take it / fix then take it / walk away), price-and-incentive architecture with a three-layer discount structure (public discount anchors the price, private discount converts, in-kind swaps protect the price list), channel mix and cost-per-lead analysis with four fraud controls, five symptom-based prescriptions for stalled absorption (each with thresholds, review window and stop-loss), 5-3-2 budget allocation, and developer-facing weekly reports with three-tier recommendations and red lines |
+
+> The advisory line handles judgment and trade-offs only; floor execution lives in the sales-floor line below, and every calculation runs through [calc-toolkit](skills/calc-toolkit/).
+
 ### 🏢 Sales-floor line (new-home sales teams)
 
 | Skill | Content |
