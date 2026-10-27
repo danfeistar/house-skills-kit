@@ -4,7 +4,7 @@
 
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8%2B-3776ab.svg)](https://www.python.org/)
-[![Skills](https://img.shields.io/badge/skills-22-brightgreen.svg)](skills/)
+[![Skills](https://img.shields.io/badge/skills-23-brightgreen.svg)](skills/)
 [![Dependencies](https://img.shields.io/badge/dependencies-zero-success.svg)](#已发布技能)
 [![CI](https://github.com/danfeistar/house-skills-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/danfeistar/house-skills-kit/actions/workflows/validate.yml)
 
@@ -100,6 +100,7 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | [pricing-incentive-release-sop 价格策略与优惠释放 SOP](skills/pricing-incentive-release-sop/) | 价格事实核验 + 房源/客户分层 + 优惠梯度 + 审批变更 + 案场执行 + 台账复盘 + 合规红线 | 营销负责人、案场负责人、置业顾问 |
 | [channel-collaboration-sop 渠道协同与分销管理 SOP](skills/channel-collaboration-sop/) | 渠道准入分层 + 政策培训 + 报备查重 + 带访交接 + 判客仲裁 + 佣金对账 + 渠道复盘 | 渠道负责人、项目营销、案场、财务 |
 | [channel-management-advisor 渠道管理与分销决策助手](skills/channel-management-advisor/) | **渠道决策层**：来访结构倒推与配比 → 渠道依赖度红线 → 佣金点位四步与**跳点双算法**（全额跳档 vs 分段累进，工具双算）→ 快佣/阶梯现金奖/费效上限 → 准入 A/B/C 分级与**合同八条款** → 三段归属与撞单仲裁 → 六指标产能诊断与四类健康画像 → 飞单信号与处罚梯度 → 月度渠道会与年度框架谈判 | 项目营销负责人、渠道总监/经理、财务对账、区域渠道统筹 |
+| [property-media-creator 房产自媒体博主内容助手](skills/property-media-creator/) | **自媒体线的完整内容生产链**：三圈定位法与五类人设 → 四源选题库（客户问答/搜索词/评论区/看台现场）与选题卡 → 黄金 3 秒八种钩子与分型脚本（10 秒速讯/15 秒深度/探盘/政策）→ 机位·字幕硬标准（零错字/关键词置上 1/3/负面词清单）·封面三要素 A/B → 五条红线与限流自查整改 → 评论区三板斧与私信六句转化 → 四指标复盘与止损规则 → 四类变现与三处披露义务 | 经纪人自营号、门店机构号、探盘测评博主、开发商营销号 |
 | [customer-advocacy-referral-sop 客户口碑与老带新运营 SOP](skills/customer-advocacy-referral-sop/) | 服务反馈分层 + 口碑内容授权 + 推荐触发 + 线索登记 + 权益兑现 + 客诉隔离 + 复盘 | 客户关系、营销、案场、内容 |
 | [launch-integrated-campaign-sop 节点开盘整合营销 SOP](skills/launch-integrated-campaign-sop/) | 开盘战役简报 + 九格协同 + 节点倒排 + 资产包 + 整合承接 + 全员演练 + 开盘衔接 + 盘后复盘 | 营销负责人、策划 |
 | `marketing-review` 月度营销复盘与经营看板模块 | `template/modules/marketing-review.md.tmpl` | 策划/营销：口径锁定、漏斗与房源结构、来源费效、异常升级与行动台账 |
@@ -118,12 +119,12 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | 一手销售 | 置业顾问跟客助手（含判客/话术） | 排期 |
 | 二手经纪人 | `broker-listing-sop` + `broker-client-deal-sop` 二手房经纪线（房源开发委托 / 客户匹配成交） | ✅ 已发布（房源端+客户端 2 件） |
 | 渠道分销 | `channel-management-advisor` 渠道管理与分销决策助手（决策层）+ `channel-collaboration-sop`（执行层） | ✅ 已发布 |
-| 房产自媒体 | 内容创作助手 | 排期 |
+| 房产自媒体 | `property-media-creator` 内容创作助手 | ✅ 已发布 |
 
 ## 仓库结构
 
 ```
-skills/            # 22 个独立技能，每个自带 SKILL.md（+ README.md / 正文 / 可选工具）
+skills/            # 23 个独立技能，每个自带 SKILL.md（+ README.md / 正文 / 可选工具）
   calc-toolkit/    #   公共计算工具包 + 35 城规则库（rules/cities.yaml）
   buyer-*/         #   购房客户（C 端）技能
   sales-*/         #   案场销售线技能

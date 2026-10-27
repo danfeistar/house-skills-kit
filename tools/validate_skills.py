@@ -147,9 +147,43 @@ def compile_calc_toolkit():
     return errors
 
 
+SPEC_SECTIONS = [
+    ("必问信息", r"必问信息"),
+    ("知识库与数据来源", r"知识库|数据来源"),
+    ("目标读者", r"目标读者"),
+    ("写作风格", r"写作风格"),
+    ("输出格式", r"输出格式"),
+    ("数据时间戳", r"数据时间戳"),
+]
+
+
+def check_spec_coverage(names):
+    """--spec：软性检查必备 12 段中的六个新增段覆盖情况（只提示，不报错）。"""
+    rows, missing_total = [], 0
+    for n in names:
+        p = os.path.join(SKILLS, n, "SKILL.md")
+        if not os.path.isfile(p):
+            continue
+        with open(p, encoding="utf-8") as f:
+            text = f.read()
+        miss = [label for label, pat in SPEC_SECTIONS if not re.search(pat, text)]
+        rows.append((n, miss))
+        missing_total += len(miss)
+    print("\n规范覆盖（docs/SKILL-AUTHORING-SPEC.md 六段）：")
+    for n, miss in rows:
+        mark = "✓" if not miss else "缺 %d/6" % len(miss)
+        detail = "" if not miss else " → " + "、".join(miss)
+        print("  %-32s %s%s" % (n, mark, detail))
+    ok = sum(1 for _, m in rows if not m)
+    print("\n达标 %d/%d 个技能（六段齐）；合计缺失 %d 段。" % (ok, len(rows), missing_total))
+    return 0
+
+
 def main():
     quiet = "--quiet" in sys.argv
     names = sorted(n for n in os.listdir(SKILLS) if os.path.isdir(os.path.join(SKILLS, n)))
+    if "--spec" in sys.argv:
+        return check_spec_coverage(names)
     all_errors, all_warnings = [], []
     for n in names:
         e, w = check_skill(n)
