@@ -1,6 +1,6 @@
 ---
 name: house-skills-kit
-description: 房产AI技能仓库总览：按身份分技能（房开企业/经纪公司/渠道分销/购房者业主/二手经纪人/一手销售/房产自媒体）。共21个独立技能：calc-toolkit公共计算工具包、购房客户线首购购房顾问、开发商销售顾问、二手经纪线（房源开发与委托/客户匹配与成交）、案场销售线与策划线十六技能（19件收官：房贷月供/二手房全成本/一手房成本/购房能力/提前还款/首套二套认定/楼层折扣/公积金额度/佣金提成/得房率换算/租金回报/LPR变动影响/持有成本/买房vs理财/面积误差补退/违约金定金/房龄贷款年限/楼面价货值/日照楼间距，35城规则库四层引擎，每个数字可追溯）；template/为品牌顾问技能生成骨架（4类角色原型×31业务模块）。Use when 需要房产相关AI技能的安装、使用、生成或按身份选型。
+description: 房产AI技能仓库总览：按身份分技能（房开企业/经纪公司/渠道分销/购房者业主/二手经纪人/一手销售/房产自媒体）。共22个独立技能：calc-toolkit公共计算工具包、购房客户线首购购房顾问、开发商销售顾问、二手经纪线（房源开发与委托/客户匹配与成交）、案场销售线与策划线十六技能（19件收官：房贷月供/二手房全成本/一手房成本/购房能力/提前还款/首套二套认定/楼层折扣/公积金额度/佣金提成/得房率换算/租金回报/LPR变动影响/持有成本/买房vs理财/面积误差补退/违约金定金/房龄贷款年限/楼面价货值/日照楼间距，35城规则库四层引擎，每个数字可追溯）；template/为品牌顾问技能生成骨架（4类角色原型×31业务模块）。Use when 需要房产相关AI技能的安装、使用、生成或按身份选型。
 license: Apache-2.0
 ---
 
@@ -30,6 +30,7 @@ license: Apache-2.0
 | **engineering-progress-broadcast-sop 工程进度与品质播报 SOP** | `skills/engineering-progress-broadcast-sop/` | 工程部/策划/品牌/案场客服：工程资料采集、节点对照、品质工艺表达、延期沟通、敏感问题升级、发布检查与复盘归档 |
 | **pricing-incentive-release-sop 价格策略与优惠释放 SOP** | `skills/pricing-incentive-release-sop/` | 营销负责人/案场负责人/置业顾问：价格事实核验、房源与客户分层、优惠梯度、审批变更、案场执行、台账复盘与合规红线 |
 | **channel-collaboration-sop 渠道协同与分销管理 SOP** | `skills/channel-collaboration-sop/` | 渠道负责人/项目营销/案场/财务：渠道准入分层、政策培训、报备查重、带访交接、判客仲裁、佣金对账与渠道复盘 |
+| **channel-management-advisor 渠道管理与分销决策助手** | `skills/channel-management-advisor/` | 项目营销负责人/渠道总监/财务：结构配比倒推、跳点双算法与费效上限、准入分级与合同八条款、归属仲裁、六指标诊断与汰换、飞单治理、年度框架谈判 |
 | **customer-advocacy-referral-sop 客户口碑与老带新运营 SOP** | `skills/customer-advocacy-referral-sop/` | 客户关系/营销/案场/内容：服务反馈分层、口碑内容授权、推荐触发、线索登记、权益兑现、客诉隔离与复盘 |
 | **launch-integrated-campaign-sop 节点开盘整合营销 SOP** | `skills/launch-integrated-campaign-sop/` | 营销负责人/策划：开盘战役简报、九格协同、节点倒排、资产包、整合承接、全员演练、开盘衔接与盘后复盘 |
 | **marketing-review 模块（月度营销复盘与经营看板）** | `template/modules/marketing-review.md.tmpl` | 策划/营销：口径锁定、漏斗与房源结构、来源费效、异常升级与行动台账 |
@@ -40,7 +41,7 @@ license: Apache-2.0
 
 ## 两条生产线
 
-1. **`skills/` 直发技能**：独立 SKILL.md，发布 ClawHub 各自成技能（现有 21 个：calc-toolkit、buyer-first-home-advisor、developer-sales-advisor、broker 二手经纪线 2 个，与案场/策划线十六个）。
+1. **`skills/` 直发技能**：独立 SKILL.md，发布 ClawHub 各自成技能（现有 22 个：calc-toolkit、buyer-first-home-advisor、developer-sales-advisor、broker 二手经纪线 2 个，与案场/策划线十六个）。
 2. **`template/` 品牌生成骨架**：4 类角色原型（consumer-buy / developer-sales / brokerage-agent / channel-distributor）× 30 业务模块，`python3 render.py --config brand.yaml --out output/my-brand/` 一份配置生成品牌专属顾问技能，`install.sh` 装进任意 Agent。
 
 ## 使用顺序建议
