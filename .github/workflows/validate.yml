@@ -31,6 +31,9 @@ jobs:
       - name: 引用完整性检查（计算器 / 兄弟技能 / Part 编号）
         run: python3 tools/check_refs.py
 
+      - name: 文档命令可执行（说明书写着的命令必须真能跑）
+        run: python3 tools/check_commands.py
+
       - name: 计算器冒烟（零依赖，直接跑）
         run: |
           set -e

@@ -35,6 +35,7 @@ python3 tools/validate_skills.py
 | 六段必备 | `必问信息` / `知识库与数据来源` / `目标读者` / `写作风格` / `输出格式` / `数据时间戳` 六段必须齐（[docs/SKILL-AUTHORING-SPEC.md](docs/SKILL-AUTHORING-SPEC.md)）。CI 跑 `validate_skills.py --spec-strict`，缺段直接失败——这六段决定技能是"能直接交付"还是"讲了个大概" |
 | 上手成本 | 新技能要在 [docs/QUICKSTART.md](docs/QUICKSTART.md) 的角色速查表里能对应上；如果它需要新的使用姿势，顺手补一行说明 |
 | README 四件套 | 适用谁 / 怎么用（AI 场景 6~8 条）/ 输出纪律 / **什么时候不要用我**（≥2 条"场景 → 该用哪个技能"）。最后这节由 `validate_skills.py` 硬校验，缺了 CI 直接失败 |
+| 文档命令可跑 | 正文里写出的 `python3 skills/calc-toolkit/...` 命令必须能直接复制执行；`tools/check_commands.py` 会逐条实跑，写错参数或改了工具没改文档都会失败 |
 | 参数单位 | 正文给计算器命令示例时写明单位：`commission.py` 的费率与 `efficiency.py --use-coef` 用小数（0.01=1%、0.88=88%），`rent.py --vacancy` 用百分数（15=15%） |
 
 ## 合规底线（硬性）

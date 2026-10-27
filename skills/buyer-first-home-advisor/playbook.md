@@ -115,8 +115,10 @@ python3 skills/calc-toolkit/capacity.py --income <家庭月收入1>,<2> --cash <
 3. **能贷多少、能贷多久**（年龄+年限、房龄限制、公积金四限）
 
 ```bash
-python3 skills/calc-toolkit/status.py     # 首套二套三口径分判（认房不认贷、卖一买一联动）
-python3 skills/calc-toolkit/fund.py       # 公积金四限取最低：上限/房价成数/还贷能力/余额倍数×缴存时间
+# 首套二套三口径分判（认房不认贷、卖一买一联动）
+python3 skills/calc-toolkit/status.py --city 昆明 --local-homes 1 --area 89
+# 公积金四限取最低：上限/房价成数/还贷能力/余额倍数×缴存时间
+python3 skills/calc-toolkit/fund.py --balances 50000 --months 36 --price 1500000 --city 昆明
 ```
 
 **翻车警示**：

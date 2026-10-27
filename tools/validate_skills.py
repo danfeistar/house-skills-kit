@@ -201,6 +201,16 @@ def check_readme_boundary(names):
     return errors
 
 
+def check_skill_map(names):
+    """每个技能必须在 docs/SKILL-MAP.md 里出现（去哪找、什么时候用都靠这一页）。"""
+    p = os.path.join(os.path.dirname(SKILLS), "docs", "SKILL-MAP.md")
+    if not os.path.isfile(p):
+        return ["缺少 docs/SKILL-MAP.md（使用者按场景找技能的入口）"]
+    with open(p, encoding="utf-8") as f:
+        text = f.read()
+    return ["%s: 未登记在 docs/SKILL-MAP.md" % n for n in names if n not in text]
+
+
 def main():
     quiet = "--quiet" in sys.argv
     names = sorted(n for n in os.listdir(SKILLS) if os.path.isdir(os.path.join(SKILLS, n)))
@@ -213,6 +223,7 @@ def main():
         all_warnings += w
     all_errors += check_readme_links()
     all_errors += check_readme_boundary(names)
+    all_errors += check_skill_map(names)
     all_errors += scan_secrets()
     all_errors += compile_calc_toolkit()
 
