@@ -2,7 +2,7 @@
 
 > 用途：**从"我手上这件事"出发找技能**，而不是从技能名字猜。
 > 每个技能自己那一页（`skills/<名>/README.md`）都有「什么时候不要用我」，两页配合看不会走错。
-> 25 个技能。新增技能必须在本页登记，`tools/validate_skills.py` 会核。
+> 26 个技能。新增技能必须在本页登记，`tools/validate_skills.py` 会核。
 
 ---
 
@@ -30,6 +30,7 @@
 | 要做老带新、口碑、客诉隔离 | `customer-advocacy-referral-sop` |
 | 要拿房源委托、签独家、防跳单 | `broker-listing-sop` |
 | 要给二手客户配房、带看、议价、过户 | `broker-client-deal-sop` |
+| 要接租赁委托、带看、签租约、处理欠租退租 | `broker-lease-sop` |
 | **我是业主，要卖房**（挂多少、找谁、什么时候点头） | `owner-sell-home-advisor` |
 | **我是业主，要出租**（租多少、配什么、租客怎么筛） | `owner-rental-advisor` |
 | **我是买家，判断这套该不该买** | `buyer-first-home-advisor` |
@@ -52,7 +53,8 @@
 `developer-sales-advisor`（五维体检出结论）→ `pricing-incentive-release-sop`（价格与优惠）→ `channel-management-advisor`（渠道配比与佣金）→ `launch-integrated-campaign-sop`（战役协同）→ 周报与预警回到 `developer-sales-advisor`
 
 **④ 二手经纪线**
-`broker-listing-sop`（拿委托）→ `broker-client-deal-sop`（配房成交）→ `calc-toolkit`（佣金/税费/解押）
+`broker-listing-sop`（拿售房委托）→ `broker-client-deal-sop`（配房成交）→ `calc-toolkit`（佣金/税费/解押）
+租赁业务另走一条：`broker-lease-sop`（委托核验 → 报价带看 → 筛租客 → 签租约 → 交房 → 退租与欠租）→ `calc-toolkit/commission.py --scene lease`
 交叉：业主自己来问卖房 → 转 `owner-sell-home-advisor`（你只做经纪端，别替业主定价）
 
 **⑤ 业主线**
@@ -80,6 +82,7 @@
 | 渠道月度对账表 | `channel-collaboration-sop` | `commission.py --scene channel` |
 | 房源委托方案（含独家对价） | `broker-listing-sop` | — |
 | 二手客户配房与议价方案 | `broker-client-deal-sop` | `tax.py` `commission.py --scene resale` |
+| 租赁委托一页纸 / 带看记录卡 / 房屋交接单 | `broker-lease-sop` | `commission.py --scene lease` `rent.py --net` |
 | **卖房决策一页纸** | `owner-sell-home-advisor` | `tax.py` `commission.py` `prepay.py` `deposit.py` |
 | **出租决策一页纸** | `owner-rental-advisor` | `rent.py --net` `holding.py` `buy_vs_invest.py` |
 | 购房预算三线表 | `buyer-first-home-advisor` | `capacity.py` `status.py` `fund.py` |

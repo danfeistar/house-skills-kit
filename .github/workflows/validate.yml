@@ -53,6 +53,8 @@ jobs:
           python3 skills/calc-toolkit/efficiency.py --gross 100 --inner 78 --use-coef 0.88 > /dev/null
           ! python3 skills/calc-toolkit/efficiency.py --gross 100 --inner 78 --use-coef 88 > /dev/null 2>&1
           ! python3 skills/calc-toolkit/rent.py --price 1500000 --rent 3500 --net --vacancy 1500 > /dev/null 2>&1
+          python3 skills/calc-toolkit/commission.py --scene lease --rent 3500 --months 1 --landlord-share 0.5 > /dev/null
+          ! python3 skills/calc-toolkit/commission.py --scene lease --rent 3500 --months 5 > /dev/null 2>&1
           echo "计算器冒烟通过"
 
       - name: 每个工具的 --help 都能跑（防 argparse 字符串回归）

@@ -82,6 +82,7 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 |---|---|---|
 | [broker-listing-sop 二手房源开发与委托 SOP](skills/broker-listing-sop/) | 六渠道房源开发与试水盘三筛 → 业主动因三问 + 价格锚点溯源 + 校准四步（市场/成本/时间/挂高代价）→ 三段式报价建议 → 委托三类对比与**协议七要素**（独家必带对价）→ 实勘十二项核验 + 拍照标准 + 房源卡字段 → 四档分级维护与 30/60/90 天触发 → 跳单信号 + 证据链四件套 + 佣金主张流程 | 二手房经纪人、门店经理、经纪公司运营（真房源合规） |
 | [broker-client-deal-sop 二手房客户匹配与成交 SOP](skills/broker-client-deal-sop/) | 需求澄清七问 + 首付四笔漏算 + 资格与贷款预判（只预判不承诺）→ 三维匹配打分（硬约束/软需求/风险扣分，每套必带"代价"）→ 一场三套带看动线与二选一话术 + 不表态四因排查 → 买卖双线议价 + 让步阶梯 + 僵局三破法 → 七步交易流程（定金/居间/网签/资金监管/贷款/过户）与**交房五交接** → **九类风险核验清单** → 佣金口径四件事与跳单应对 | 二手房经纪人、门店经理、交易专员 |
+| [broker-lease-sop 租赁经纪作业标准](skills/broker-lease-sop/) | 委托六项核验 + 委托类型三选一 + 委托条款七项 → 三源锚点报价（挂牌-成交价差、空置换算）→ 合法筛选边界（能问什么/不能问什么）+ 收入租金比 + 四种骗局识别 → **十项必备条款** + 押金与首日现金结构（佣金走 `commission.py --scene lease`）→ 交房五件套 → 报修三档/续租/退租四步 → 欠租四步与四类高风险情形 | 二手房门店租赁经纪人、长租公寓运营、兼做租赁的自媒体 |
 
 > 这一线是二手房执业口径（双边议价、产权核验、真房源合规）；面向购房者自己的决策流程见 [buyer-first-home-advisor](skills/buyer-first-home-advisor/)，测算走 [calc-toolkit](skills/calc-toolkit/)。
 
@@ -128,7 +129,7 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | 购房客户 | `buyer-first-home-advisor` 首购购房顾问（需求澄清/预算三线/选筹打分/看房验真/议价签约/收房税费） | ✅ 已发布 |
 | 房开案场 | `developer-sales-advisor` 开发商销售顾问（甲方决策线：研判/价格/渠道/处方/预算/汇报） | ✅ 已发布 |
 | 一手销售 | 置业顾问跟客助手（含判客/话术） | ✅ 已由 `sales-reception-sop` + `sales-lead-grading` + `sales-talk-library` 覆盖 |
-| 二手经纪人 | `broker-listing-sop` + `broker-client-deal-sop` 二手房经纪线（房源开发委托 / 客户匹配成交） | ✅ 已发布（房源端+客户端 2 件） |
+| 二手经纪人 | `broker-listing-sop` + `broker-client-deal-sop` + `broker-lease-sop` 二手房经纪线（房源开发委托 / 客户匹配成交 / 租赁作业） | ✅ 已发布（房源端+客户端+租赁端 3 件） |
 | 渠道分销 | `channel-management-advisor` 渠道管理与分销决策助手（决策层）+ `channel-collaboration-sop`（执行层） | ✅ 已发布 |
 | 房产自媒体 | `property-media-creator` 内容创作助手 | ✅ 已发布 |
 | 业主端 | `owner-sell-home-advisor` 卖房业主决策 + `owner-rental-advisor` 出租业主决策 | ✅ 已发布（卖/租 2 件） |
@@ -160,7 +161,7 @@ python3 tools/check_refs.py           # 引用完整性：计算器脚本 / 兄�
 python3 tools/check_commands.py           # 文档里的计算器命令逐条实跑
 ```
 
-当前状态：**25 个技能，六段覆盖 25/25**。新增技能请按 [docs/SKILL-AUTHORING-SPEC.md](docs/SKILL-AUTHORING-SPEC.md) 写，`--spec` 会指出缺哪段。
+当前状态：**26 个技能，六段覆盖 26/26**。新增技能请按 [docs/SKILL-AUTHORING-SPEC.md](docs/SKILL-AUTHORING-SPEC.md) 写，`--spec` 会指出缺哪段。
 
 CI（GitHub Actions）在每次 push 与 PR 上跑：技能自检 → 计算器冒烟 → 每个工具 `--help` → 零依赖渲染 → 渲染可复现性。
 

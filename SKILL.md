@@ -1,6 +1,6 @@
 ---
 name: house-skills-kit
-description: 房产AI技能仓库总览：按身份分技能（房开企业/经纪公司/渠道分销/购房者业主/二手经纪人/一手销售/房产自媒体）。共25个独立技能：calc-toolkit公共计算工具包、购房客户线首购购房顾问、开发商销售顾问、二手经纪线（房源开发与委托/客户匹配与成交）、案场销售线与策划线十六技能（19件收官：房贷月供/二手房全成本/一手房成本/购房能力/提前还款/首套二套认定/楼层折扣/公积金额度/佣金提成/得房率换算/租金回报/LPR变动影响/持有成本/买房vs理财/面积误差补退/违约金定金/房龄贷款年限/楼面价货值/日照楼间距，35城规则库四层引擎，每个数字可追溯）；template/为品牌顾问技能生成骨架（4类角色原型×31业务模块）。Use when 需要房产相关AI技能的安装、使用、生成或按身份选型。
+description: 房产AI技能仓库总览：按身份分技能（房开企业/经纪公司/渠道分销/购房者业主/二手经纪人/一手销售/房产自媒体）。共26个独立技能：calc-toolkit公共计算工具包、购房客户线首购购房顾问、开发商销售顾问、二手经纪线（房源开发与委托/客户匹配与成交/租赁作业）、案场销售线与策划线十六技能（19件收官：房贷月供/二手房全成本/一手房成本/购房能力/提前还款/首套二套认定/楼层折扣/公积金额度/佣金提成/得房率换算/租金回报/LPR变动影响/持有成本/买房vs理财/面积误差补退/违约金定金/房龄贷款年限/楼面价货值/日照楼间距，35城规则库四层引擎，每个数字可追溯）；template/为品牌顾问技能生成骨架（4类角色原型×31业务模块）。Use when 需要房产相关AI技能的安装、使用、生成或按身份选型。
 license: Apache-2.0
 ---
 
@@ -16,6 +16,7 @@ license: Apache-2.0
 | **buyer-first-home-advisor 首购购房顾问** | `skills/buyer-first-home-advisor/` | 购房客户（C 端自住）：需求澄清七问、预算三线法、资格与首套三口径、片区五维+楼盘百分制打分卡、一手五看法+二手15项验房、议价与合同十条、贷款与提前还款、收房税费、八类坑与红线、三句话收口 |
 | **broker-listing-sop 二手房源开发与委托 SOP** | `skills/broker-listing-sop/` | 二手房经纪人/门店经理：六渠道房源开发与三筛、业主动因与价格校准四步、委托协议七要素与独家对价、实勘十二项与真房源档案、四档维护节奏、跳单证据链 |
 | **broker-client-deal-sop 二手房客户匹配与成交 SOP** | `skills/broker-client-deal-sop/` | 二手房经纪人/交易专员：需求七问与资格预判、三维匹配打分、一场三套带看与二选一、买卖双线议价、七步交易流程与交房五交接、九类风险核验、佣金与跳单争议 |
+| **broker-lease-sop 租赁经纪作业标准** | `skills/broker-lease-sop/` | 租赁经纪人/长租运营：委托六项核验与条款七项、三源锚点报价与空置换算、合法筛选边界与收入租金比、十项必备条款与佣金分摊（`commission.py --scene lease`）、交房五件套、退租四步、欠租四步与四类高风险情形 |
 | **sales-talk-library 案场话术库** | `skills/sales-talk-library/` | 置业顾问/销售经理：地段/配套/户型/竞品/品牌五域标准说辞、分客群变通与合规红线 |
 | **sales-objection-handling 客户异议处理** | `skills/sales-objection-handling/` | 置业顾问/销售经理：高频异议三段式应对、禁语清单与演练 |
 | **sales-closing-sop 算价与逼定 SOP** | `skills/sales-closing-sop/` | 置业顾问/销售主管：算价动作链、议价博弈、逼定信号与团队配合逼定 |
@@ -38,7 +39,7 @@ license: Apache-2.0
 | **launch-integrated-campaign-sop 节点开盘整合营销 SOP** | `skills/launch-integrated-campaign-sop/` | 营销负责人/策划：开盘战役简报、九格协同、节点倒排、资产包、整合承接、全员演练、开盘衔接与盘后复盘 |
 | **marketing-review 模块（月度营销复盘与经营看板）** | `template/modules/marketing-review.md.tmpl` | 策划/营销：口径锁定、漏斗与房源结构、来源费效、异常升级与行动台账 |
 | 案场销售顾问（排期） | `skills/`（待建） | 房开案场 |
-| **二手经纪线（broker-listing-sop / broker-client-deal-sop）** | `skills/broker-*/` | 二手经纪人/经纪公司 |
+| **二手经纪线（broker-listing-sop / broker-client-deal-sop / broker-lease-sop）** | `skills/broker-*/` | 二手经纪人/经纪公司（含租赁业务） |
 | 渠道管理助手（排期） | `skills/`（待建） | 渠道分销 |
 | **房产自媒体内容助手** | `skills/property-media-creator/` | 房产自媒体博主 |
 | **业主端（卖房/出租决策）** | `skills/owner-*` | 房产持有人（业主） |
