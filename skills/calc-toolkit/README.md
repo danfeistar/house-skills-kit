@@ -26,6 +26,8 @@ python3 skills/calc-toolkit/floor.py --price 25000 --area 100 --floor 15 --top 3
 | ⑦-15 | 楼层差价+折扣叠加 | `floor.py` | 楼层加价 × 营销折上折 × 付款折扣，**折扣真伪校验**（防"先涨后折"）、邻层速查 |
 | ⑦-16 | 公积金贷款额度测算器 | `fund.py` | 四限取最低（上限封顶/房价成数/还贷能力/余额倍数×缴存时间系数），多子女/绿建/人才上浮；昆明=2026-04-07新政（单70/双100，叠加至150万） |
 | ⑦-17 | 佣金/提成试算器 | `commission.py` | 二手中介费买卖分账+活动折扣；渠道阶梯**双算法对账**（全额跳档vs分段累进）；**租赁佣金**（月租×佣金月数、房东/租客分摊、占年租金折算）；返佣+团队分佣一条龙 |
+| ⑦-22 | 开发项目投前测算器 | `feasibility.py` | 总货值/总投资/净利率/**双口径 IRR（全投资 + 自有资金）**/盈亏平衡售价/三因子 ±10% 敏感性；土地可给总价或楼面地价 |
+| ⑦-23 | 商业物业收益与估值 | `commercial.py` | NOI、毛/净回报、租售比、静态回收、**收益法估值 V=NOI/cap**、隐含 cap 反查、持有期 IRR（含退出 cap） |
 | ⑦-18 | 得房率与单价换算器 | `efficiency.py` | 建面↔套内↔公摊↔使用面积链+反推；单价双向换算；双盘套内口径比价照妖镜 |
 | ⑦-19 | 租金回报率计算器 | `rent.py` | 租售比/毛净回报率/回收年限；五档坐标（价值线/回本线/50城均值/存款/以租养贷）；目标回报率反推 |
 | ⑦-20 | LPR变动影响测算器 | `lpr.py` | 重定价月供变化（合同加点不变）；情景沙盘±10/25/50BP；重定价周期3/6/12选择（存续期仅改一次） |
@@ -81,6 +83,8 @@ python3 tools/mortgage.py --template my_kunming --price 1800000 --downpay 25 --y
 | `commission.py` | `--buyer-rate` `--seller-rate` `--bonus-rate` `--rebate` `--splits` `--rate` | **小数** | `--seller-rate 0.01` = 1%；`--rebate 0.3` = 返 30% |
 | `commission.py --scene lease` | `--landlord-share` `--tenant-share` | **小数**（0~1 真值） | `--landlord-share 0.5` = 各半；`1` = 全部房东承担 |
 | `commission.py --scene lease` | `--months` | **月数** | `--months 1` = 一个月租金；`1.5` = 一个半月（上限 3） |
+| `feasibility.py` | `--far` **倍**；`--sellable-ratio` **小数**；`--other-pct/--admin-pct/--tax-pct/--finance-pct` **百分数**；`--land-area/--build-cost/--price` 元或㎡ | 混合 | `--far 2.0`；`--sellable-ratio 0.95`；`--tax-pct 10` = 10% |
+| `commercial.py` | `--vacancy/--opex-pct/--tax-pct/--cap/--growth/--exit-cap` **百分数**；`--rent` 元/㎡·月 | 混合 | `--vacancy 8` = 8%；`--rent 120` 指每平米每月 |
 | `efficiency.py` | `--use-coef` | **小数** | `--use-coef 0.88` = 88% |
 | `efficiency.py` | `--rate` `--rate-a` `--rate-b` | 百分数 | `--rate 78` = 78% |
 | `rent.py` | `--vacancy` `--tax-rate` `--maint` `--target-yield` | **百分数** | `--vacancy 15` = 15% |

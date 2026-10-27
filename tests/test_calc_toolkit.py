@@ -162,5 +162,112 @@ class TestSmokeAllTools(unittest.TestCase):
             self.assertEqual(code, 0, f"{tool} --help 失败：{out[:400]}")
 
 
+class TestFeasibility(unittest.TestCase):
+    """投前测算：结构自洽 + 双口径 IRR 必须同时存在 + 越界拦截。"""
+
+    BASE = ["--land-area", "40000", "--far", "2.0", "--land-floor-price", "2500",
+            "--build-cost", "3800", "--price", "11000", "--sell-years", "3"]
+
+    def test_margin_and_breakeven(self):
+        code, out = run("feasibility.py", *self.BASE)
+        self.assertEqual(code, 0, out)
+        margin = num(out, r"净利率 ([\d.]+)%")
+        self.assertAlmostEqual(margin, 15.6, delta=0.4, msg=out)
+        be = num(out, r"盈亏平衡售价 ≈ ([\d,]+) 元/㎡")
+        self.assertAlmostEqual(be, 8953, delta=25, msg=out)
+
+    def test_both_irr_reported(self):
+        """全投资与自有资金两个 IRR 必须同时给出（只报后者会被当成忽悠）。"""
+        code, out = run("feasibility.py", *self.BASE)
+        self.assertEqual(code, 0, out)
+        self.assertIn("全投资 IRR", out)
+        self.assertIn("自有资金 IRR", out)
+        irr_all = num(out, r"全投资 IRR ≈ ([\d.]+)%")
+        irr_eq = num(out, r"自有资金 IRR ≈ ([\d.]+)%")
+        self.assertLess(irr_all, irr_eq, "自有资金 IRR 应高于全投资 IRR：" + out)
+        self.assertAlmostEqual(irr_all, 11.0, delta=0.6, msg=out)
+
+    def test_profit_identity(self):
+        """净利润 = 总货值 - 总投资（内部自洽，误差容忍分舍入）。"""
+        code, out = run("feasibility.py", *self.BASE, "--no-sensitivity")
+        self.assertEqual(code, 0, out)
+        def yi(label):
+            return num(out, label + r"[^\n]*?([\d.]+) (?:亿)?元")
+        rev = num(out, r"总货值[^\n]*?([\d.]+) 亿元")
+        cost = num(out, r"总投资 ≈ ([\d.]+) 亿元")
+        profit = num(out, r"净利润 ≈ ([\d.]+) 亿元")
+        self.assertAlmostEqual(profit, rev - cost, delta=0.02, msg=out)
+
+    def test_sellable_ratio_guard(self):
+        code, out = run("feasibility.py", "--land-area", "40000", "--far", "2.0",
+                        "--land-floor-price", "2500", "--build-cost", "3800",
+                        "--price", "11000", "--sellable-ratio", "1.5")
+        self.assertNotEqual(code, 0, out)
+        self.assertIn("0.95", out)          # 报错要给出正确写法
+
+    def test_tax_pct_guard(self):
+        code, out = run("feasibility.py", *self.BASE[:1], *self.BASE[1:], "--tax-pct", "150")
+        self.assertNotEqual(code, 0, out)
+
+    def test_price_drop_hurts_margin(self):
+        code, base = run("feasibility.py", *self.BASE, "--no-sensitivity")
+        m0 = num(base, r"净利率 ([\d.]+)%")
+        args = list(self.BASE)
+        args[args.index("--price") + 1] = "9900"     # 售价 -10%
+        code2, low = run("feasibility.py", *args, "--no-sensitivity")
+        m1 = num(low, r"净利率 ([\d.]+)%")
+        self.assertLess(m1, m0, "售价 -10% 后净利率必须下降")
+        self.assertGreater(m1, 0, "本案例售价 -10% 仍应盈利（安全垫 22.9%）")
+
+    def test_breakeven_only_mode(self):
+        code, out = run("feasibility.py", *self.BASE, "--breakeven-only")
+        self.assertEqual(code, 0, out)
+        self.assertIn("盈亏平衡售价", out)
+        self.assertIn("安全垫", out)
+
+
+class TestCommercial(unittest.TestCase):
+    """商业：毛/净回报必须分开、收益法估值口径、隐含 cap、退出 cap 敏感性。"""
+
+    SHOP = ["--area", "60", "--price", "1800000", "--rent", "120"]
+
+    def test_gross_vs_net_yield(self):
+        code, out = run("commercial.py", *self.SHOP)
+        self.assertEqual(code, 0, out)
+        gross = num(out, r"毛租金回报率 ([\d.]+)%")
+        net = num(out, r"净回报率（NOI/总价）([\d.]+)%")
+        self.assertAlmostEqual(gross, 4.80, delta=0.05, msg=out)
+        self.assertAlmostEqual(net, 3.22, delta=0.05, msg=out)
+        self.assertLess(net, gross, "净回报必须低于毛回报")
+
+    def test_valuation_by_cap(self):
+        code, out = run("commercial.py", *self.SHOP)
+        v = num(out, r"按资本化率 5% → 合理估值 ([\d.]+) 万元")
+        self.assertAlmostEqual(v, 116.1, delta=0.5, msg=out)
+
+    def test_implied_cap_matches_net_yield(self):
+        code, out = run("commercial.py", *self.SHOP, "--implied-cap")
+        self.assertEqual(code, 0, out)
+        implied = num(out, r"隐含资本化率 ≈ ([\d.]+)%")
+        self.assertAlmostEqual(implied, 3.22, delta=0.05, msg=out)
+
+    def test_vacancy_guard(self):
+        code, out = run("commercial.py", *self.SHOP, "--vacancy", "800")
+        self.assertNotEqual(code, 0, out)
+        self.assertIn("需为百分数", out)     # 报错要说明口径
+
+    def test_price_required(self):
+        code, out = run("commercial.py", "--area", "60", "--rent", "120")
+        self.assertNotEqual(code, 0, out)
+        self.assertIn("--price", out)
+
+    def test_higher_exit_cap_lowers_irr(self):
+        code, a = run("commercial.py", *self.SHOP, "--hold", "10", "--exit-cap", "5")
+        irr_a = num(a, r"持有 10 年 IRR ≈ (-?[\d.]+)%")
+        code_b, b = run("commercial.py", *self.SHOP, "--hold", "10", "--exit-cap", "7")
+        irr_b = num(b, r"持有 10 年 IRR ≈ (-?[\d.]+)%")
+        self.assertLess(irr_b, irr_a, "退出 cap 升高，IRR 必须下降")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

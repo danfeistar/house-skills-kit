@@ -2,7 +2,7 @@
 
 > 用途：**从"我手上这件事"出发找技能**，而不是从技能名字猜。
 > 每个技能自己那一页（`skills/<名>/README.md`）都有「什么时候不要用我」，两页配合看不会走错。
-> 26 个技能。新增技能必须在本页登记，`tools/validate_skills.py` 会核。
+> 28 个技能。新增技能必须在本页登记，`tools/validate_skills.py` 会核。
 
 ---
 
@@ -31,6 +31,8 @@
 | 要拿房源委托、签独家、防跳单 | `broker-listing-sop` |
 | 要给二手客户配房、带看、议价、过户 | `broker-client-deal-sop` |
 | 要接租赁委托、带看、签租约、处理欠租退租 | `broker-lease-sop` |
+| 要看一块地能不能拿、要不要做可研 | `project-feasibility-advisor` |
+| 客户要买商铺/写字楼/公寓，判断值不值 | `commercial-property-advisor` |
 | **我是业主，要卖房**（挂多少、找谁、什么时候点头） | `owner-sell-home-advisor` |
 | **我是业主，要出租**（租多少、配什么、租客怎么筛） | `owner-rental-advisor` |
 | **我是买家，判断这套该不该买** | `buyer-first-home-advisor` |
@@ -83,6 +85,8 @@
 | 房源委托方案（含独家对价） | `broker-listing-sop` | — |
 | 二手客户配房与议价方案 | `broker-client-deal-sop` | `tax.py` `commission.py --scene resale` |
 | 租赁委托一页纸 / 带看记录卡 / 房屋交接单 | `broker-lease-sop` | `commission.py --scene lease` `rent.py --net` |
+| 一页纸投前测算 / 敏感性表 / 可研报告 | `project-feasibility-advisor` | `feasibility.py`（盈亏平衡 + 敏感性） |
+| 商业一页纸估值卡 / 隐含 cap 反查 / 租约核对表 | `commercial-property-advisor` | `commercial.py`（NOI / cap / 持有 IRR） |
 | **卖房决策一页纸** | `owner-sell-home-advisor` | `tax.py` `commission.py` `prepay.py` `deposit.py` |
 | **出租决策一页纸** | `owner-rental-advisor` | `rent.py --net` `holding.py` `buy_vs_invest.py` |
 | 购房预算三线表 | `buyer-first-home-advisor` | `capacity.py` `status.py` `fund.py` |

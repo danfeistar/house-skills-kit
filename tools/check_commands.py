@@ -42,15 +42,29 @@ def target_files():
 
 
 def extract():
-    """返回 [(来源文件:行号, 命令)]，按出现顺序、去重。"""
+    """返回 [(来源文件:行号, 命令)]，按出现顺序、去重。
+
+    支持反斜杠续行：文档里写惯的
+        python3 skills/calc-toolkit/x.py --a 1 \\
+            --b 2
+    会被拼成一条完整命令再试跑——否则续行的参数永远缺失，必然误报。
+    """
     seen, rows = set(), []
     for path in target_files():
         with open(path, encoding="utf-8") as f:
-            for i, line in enumerate(f, 1):
-                m = CMD_PAT.match(line)
-                if not m:
-                    continue
-                cmd = m.group(1).strip()
+            lines = f.readlines()
+        i = 0
+        while i < len(lines):
+            line = lines[i]
+            i += 1
+            m = CMD_PAT.match(line)
+            if not m:
+                continue
+            cmd = m.group(1).strip()
+            while cmd.endswith("\\") and i < len(lines):
+                cmd = cmd[:-1].rstrip() + " " + lines[i].strip()
+                i += 1
+            if True:
                 if SKIP_PAT.search(cmd) or cmd.startswith("!") or "$" in cmd:
                     continue
                 cmd = re.sub(r"\s+#.*$", "", cmd)          # 去掉行尾注释

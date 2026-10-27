@@ -74,6 +74,14 @@ jobs:
           ! python3 skills/calc-toolkit/rent.py --price 1500000 --rent 3500 --net --vacancy 1500 > /dev/null 2>&1
           python3 skills/calc-toolkit/commission.py --scene lease --rent 3500 --months 1 --landlord-share 0.5 > /dev/null
           ! python3 skills/calc-toolkit/commission.py --scene lease --rent 3500 --months 5 > /dev/null 2>&1
+          # 投前测算：双口径 IRR 必须同时打印；可售比传小数，越界必须被拦
+          python3 skills/calc-toolkit/feasibility.py --land-area 40000 --far 2.0 --land-floor-price 2500 --build-cost 3800 --price 11000 --sell-years 3 | grep -q "自有资金 IRR"
+          python3 skills/calc-toolkit/feasibility.py --land-area 40000 --far 2.0 --land-floor-price 2500 --build-cost 3800 --price 11000 --breakeven-only > /dev/null
+          ! python3 skills/calc-toolkit/feasibility.py --land-area 40000 --far 2.0 --land-floor-price 2500 --build-cost 3800 --price 11000 --sellable-ratio 1.5 > /dev/null 2>&1
+          # 商业：毛/净回报分开报，隐含 cap 可反查
+          python3 skills/calc-toolkit/commercial.py --area 60 --price 1800000 --rent 120 | grep -q "净回报率"
+          python3 skills/calc-toolkit/commercial.py --area 60 --price 1800000 --rent 120 --implied-cap | grep -q "隐含资本化率"
+          ! python3 skills/calc-toolkit/commercial.py --area 60 --price 1800000 --rent 120 --vacancy 800 > /dev/null 2>&1
           echo "计算器冒烟通过"
 
       - name: 每个工具的 --help 都能跑（防 argparse 字符串回归）
