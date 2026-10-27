@@ -159,6 +159,7 @@ python3 tools/validate_skills.py     # 结构与文档自检：技能目录/fron
 python3 tools/validate_skills.py --spec   # 规范覆盖率自检：12 段必备结构（六段新增段）逐技能核对
 python3 tools/check_refs.py           # 引用完整性：计算器脚本 / 兄弟技能目录 / Part 编号是否真实存在
 python3 tools/check_commands.py           # 文档里的计算器命令逐条实跑
+python3 tools/check_links.py              # Markdown 相对链接是否还有效（改名后的死链）
 ```
 
 当前状态：**26 个技能，六段覆盖 26/26**。新增技能请按 [docs/SKILL-AUTHORING-SPEC.md](docs/SKILL-AUTHORING-SPEC.md) 写，`--spec` 会指出缺哪段。

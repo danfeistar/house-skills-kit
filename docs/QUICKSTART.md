@@ -170,7 +170,8 @@ python3 tools/validate_skills.py --quiet
 | 你是 | 起手技能 | 常用的下一步 |
 |---|---|---|
 | 一手案场顾问 | `sales-reception-sop` | `sales-lead-grading` → `sales-closing-sop` |
-| 二手房经纪人 | `broker-listing-sop` / `broker-client-deal-sop` | `calc-toolkit`（佣金、税费） |
+| 二手房经纪人（买卖） | `broker-listing-sop` / `broker-client-deal-sop` | `calc-toolkit`（佣金、税费） |
+| 二手房经纪人（租赁） | `broker-lease-sop` | `calc-toolkit`（`commission.py --scene lease` 佣金分摊） |
 | 策划 | `presale-marketing-sop` | `competitive-intel-sop`、`marketing-materials-sop` |
 | 营销负责人 | `developer-sales-advisor` | `channel-management-advisor`、`pricing-incentive-release-sop` |
 | 购房者 | `buyer-first-home-advisor` | `calc-toolkit`（月供、全成本） |

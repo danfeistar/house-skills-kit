@@ -34,6 +34,9 @@ jobs:
       - name: 文档命令可执行（说明书写着的命令必须真能跑）
         run: python3 tools/check_commands.py
 
+      - name: 内部链接可达（改名/删文件后的死链）
+        run: python3 tools/check_links.py
+
       - name: 计算器冒烟（零依赖，直接跑）
         run: |
           set -e
