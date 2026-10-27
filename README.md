@@ -146,6 +146,7 @@ tools/             # 仓库自检脚本（结构与文档校验）
 ```bash
 python3 tools/validate_skills.py     # 结构与文档自检：技能目录/frontmatter/链接/疑似密钥/编译
 python3 tools/validate_skills.py --spec   # 规范覆盖率自检：12 段必备结构（六段新增段）逐技能核对
+python3 tools/check_refs.py           # 引用完整性：计算器脚本 / 兄弟技能目录 / Part 编号是否真实存在
 ```
 
 当前状态：**23 个技能，六段覆盖 23/23**。新增技能请按 [docs/SKILL-AUTHORING-SPEC.md](docs/SKILL-AUTHORING-SPEC.md) 写，`--spec` 会指出缺哪段。

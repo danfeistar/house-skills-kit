@@ -28,6 +28,9 @@ jobs:
       - name: 规范覆盖率自检（12 段必备结构，缺失即失败）
         run: python3 tools/validate_skills.py --spec-strict
 
+      - name: 引用完整性检查（计算器 / 兄弟技能 / Part 编号）
+        run: python3 tools/check_refs.py
+
       - name: 计算器冒烟（零依赖，直接跑）
         run: |
           set -e
