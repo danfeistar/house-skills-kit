@@ -21,5 +21,17 @@
 - 竞品监控 → competitive-intel-sop
 - 活动组织 → activity-organization-sop
 
+## 什么时候不要用我
+
+这个技能有明确边界，用错场景会得到看似正确但方向相反的结论：
+
+- **佣金点位、渠道政策与跳点算法** → `channel-management-advisor` + `calc-toolkit/commission.py`
+- **单盘整体经营诊断与去化处方** → `developer-sales-advisor`
+- **单个客户的算价与逼定** → `sales-closing-sop`
+- **税费、月供、违约金测算** → `calc-toolkit` 的 `tax.py` / `mortgage.py` / `deposit.py`
+- **一房一价与备案价的合规口径** → 按当地房价备案与明码标价规定现查
+
+本技能不提供政策数字与法律结论：一律按当地当期公告现查。
+
 ## 状态
 - v0.1：价格事实卡、房源/客户分层、优惠梯度、审批变更、案场执行、台账复盘和合规红线

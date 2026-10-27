@@ -69,6 +69,13 @@ national default → city (e.g. Kunming high-rise maintenance fund 90 CNY/㎡) �
 
 > This line is written from the practitioner's side (two-sided negotiation, title verification, truthful-listing compliance); buyer-side decision flow lives in [buyer-first-home-advisor](skills/buyer-first-home-advisor/).
 
+### 🏠 Owner-side skills (property holders)
+
+| Skill | What it covers |
+|---|---|
+| [owner-sell-home-advisor](skills/owner-sell-home-advisor/) | Seller-side decisions end to end: whether and when to sell plus the replacement-sequencing trade-off, four-step pricing (three-source anchors, **net-proceeds back-calculation**, the real cost of overpricing, a de-escalation rhythm), viewability work, six-dimension agent comparison with seven mandate clauses to verify, five questions before accepting an offer with deposit-penalty maths, the full transaction flow with five recurring dispute types and their prevention, and special cases (inheritance, co-ownership, divorce division, mortgage, seizure, school-place occupancy, tenanted sale) |
+| [owner-rental-advisor](skills/owner-rental-advisor/) | Landlord-side decisions end to end: rent / sell / hold comparison with gross and net yield plus the break-even appreciation line, rent pricing with vacancy arithmetic, property preparation and compliance red lines (no partition subletting, no change of use), the lawful limits of tenant screening with ten mandatory lease clauses, performance management (repair liability, four-step move-out inspection, four-step arrears handling, entry rights), self-managing vs agency management, and special cases (shared rentals, short stays, school places, subletting) |
+
 ### 🏢 Sales-floor line (new-home sales teams)
 
 | Skill | Content |

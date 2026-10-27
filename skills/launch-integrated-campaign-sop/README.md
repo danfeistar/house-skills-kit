@@ -21,5 +21,16 @@
 - channel-collaboration-sop：渠道协同
 - sales-opening-sop：开盘日执行
 
+## 什么时候不要用我
+
+这个技能有明确边界，用错场景会得到看似正确但方向相反的结论：
+
+- **单场活动的组织执行** → `activity-organization-sop`
+- **物料制作与示范区** → `marketing-materials-sop`
+- **价格与优惠方案设计** → `pricing-incentive-release-sop`
+- **开盘日案场执行与应急预案** → `sales-opening-sop`
+
+本技能不提供政策数字与法律结论：一律按当地当期公告现查。
+
 ## 状态
 - v0.1：战役简报、九格协同、节点倒排、资产包、整合承接、全员演练、开盘衔接和盘后复盘

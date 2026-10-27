@@ -40,6 +40,18 @@
 
 不承诺政策、不做虚假宣导、不碰客户隐私、不利诱违规、不越权定价。任何让利都必须有书面审批，任何建议都必须写明风险与止损。
 
+## 什么时候不要用我
+
+这个技能有明确边界，用错场景会得到看似正确但方向相反的结论：
+
+- **拿地前的规划指标与土地经济测算** → 不在本技能范围：需要投前的土地经济与规划模型（本技能从"已有项目"开始）
+- **渠道执行层动作（报备、带访、对账）** → `channel-collaboration-sop`（执行层）；渠道政策设计才用 `channel-management-advisor`
+- **单个客户的接待、算价、逼定** → `sales-reception-sop` / `sales-closing-sop` / `sales-objection-handling`
+- **广告创意与内容生产** → `marketing-materials-sop`（物料）／`property-media-creator`（自媒体内容）
+- **价格政策对外说法的合规审核** → `pricing-incentive-release-sop` + 法务；本技能给的是内部决策逻辑
+
+本技能不提供政策数字与法律结论：一律按当地当期公告现查。
+
 ## 许可
 
 Apache-2.0

@@ -72,12 +72,41 @@ python3 tools/mortgage.py --template my_kunming --price 1800000 --downpay 25 --y
 - 综合 = 0.98×0.99×0.98 = **0.9508**，成交 = 253万 × 0.9508 = **2,405,514 元**（优惠 124,486）
 - 套路校验：把基准改 26,000 同样折扣 → 折后更高 → 判定"折扣注水"
 
+## 参数单位约定（2026-10-28 全量核对）
+
+工具历史演进导致单位不完全一致，**混用会差 100 倍**。下表为逐个实测结论：
+
+| 工具 | 参数 | 单位 | 正确写法 |
+|---|---|---|---|
+| `commission.py` | `--buyer-rate` `--seller-rate` `--bonus-rate` `--rebate` `--splits` `--rate` | **小数** | `--seller-rate 0.01` = 1%；`--rebate 0.3` = 返 30% |
+| `efficiency.py` | `--use-coef` | **小数** | `--use-coef 0.88` = 88% |
+| `efficiency.py` | `--rate` `--rate-a` `--rate-b` | 百分数 | `--rate 78` = 78% |
+| `rent.py` | `--vacancy` `--tax-rate` `--maint` `--target-yield` | **百分数** | `--vacancy 15` = 15% |
+| `holding.py` | `--vacancy` | **月数** | `--vacancy 1` = 年空置 1 个月 |
+| `holding.py` | `--tax-rate` | 百分数 | `--tax-rate 5` = 5% |
+| `holding.py` | `--agent-months` | 月租倍数 | `--agent-months 0.5` = 半月租 |
+| `tax.py` `prepay.py` `mortgage.py` `capacity.py` `lpr.py` `buy_vs_invest.py` `area_error.py` | `--rate` `--tax-rate` `--agent` `--down-pct` `--cost-pct` `--ratio` 等 | 百分数 | `--rate 3.1` = 3.1% |
+| `buy_vs_invest.py` | `--growth` | 百分数（逗号分隔多情景） | `--growth=-3,0,5`（负数须用 `=` 连接） |
+
+**越界会拦**：`--use-coef 88` 直接报错并提示改成 `0.88`；`rent.py --vacancy 1500` 报错提示应为百分数；`commission.py --seller-rate 1` 提示"被当作小数处理 → 100%"。看到提示请改参数重跑，不要绕过。
+
 ## 已知边界（诚实声明）
 
 - 规则库全部档位为**演示口径**（yaml 顶部已声明），正式商用前须逐城核对当地最新官方公告——这是产品机制（数据外置+版本标注），不是缺陷
 - 楼层差按"每层递增 X 元/㎡"线性简化；一房一价精确口径以销控表为准
 - 个税"差额20% vs 全额1%"演示取低逻辑，部分城市强制差额法 → 改城市 YAML 即可
 - 契税/增值税以家庭为单位认定（含未成年子女），工具按用户自报 `--first` 计算
+
+## 什么时候不要用我
+
+这是**场景边界**（计算口径上的简化见上一节「已知边界」）。用错场景会得到看似正确但方向相反的结论：
+
+- **要连政策口径一起下判断（限购、首套认定、税费是否适用）** → `buyer-first-home-advisor`（资格与首套三口径）或 `sales-mortgage-sop`（资质预判）；本工具只按你给的参数算数，不做政策认定
+- **要判断一套房"值不值得这个价"** → `buyer-first-home-advisor` 的片区与选筹打分；本工具不做估值
+- **要银行批复或公积金中心的最终数字** → 以银行与公积金中心答复为准；本工具的额度、利率是测算口径
+- **参数不在规则库里（新城市、新政策）** → 用 `--set 键=值` 显式覆盖，并在交付里标明来源与版本；不要手改一个近似值当结论
+
+本技能不提供政策数字与法律结论：一律按当地当期公告现查。
 
 ## 后续 17 件（按锁版清单推进）
 

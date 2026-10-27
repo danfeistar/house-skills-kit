@@ -26,5 +26,16 @@
 - 认筹开盘衔接 → sales-opening-sop
 - 话术库 → sales-talk-library / sales-objection-handling
 
+## 什么时候不要用我
+
+这个技能有明确边界，用错场景会得到看似正确但方向相反的结论：
+
+- **蓄客节奏与节点倒排** → `presale-marketing-sop`
+- **物料设计与示范区** → `marketing-materials-sop`
+- **开盘日选房动线与应急** → `sales-opening-sop`
+- **活动内容的自媒体二次传播** → `property-media-creator`
+
+本技能不提供政策数字与法律结论：一律按当地当期公告现查。
+
 ## 状态
 - v0.1：8 Part + 附录；目标设计→选型→方案→执行→承接→复盘→红线闭环

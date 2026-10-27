@@ -84,8 +84,10 @@ def main() -> None:
                     help="resale=二手中介费 / channel=新房渠道分销（默认 resale）")
     ap.add_argument("--price", type=float, default=None, help="单套成交总价（元，resale用）")
     ap.add_argument("--amount", type=float, default=None, help="签约总额（元，channel用；resale多套合计也可用）")
-    ap.add_argument("--buyer-rate", type=float, default=None, help="二手买方费率（默认规则库，昆明2%%）")
-    ap.add_argument("--seller-rate", type=float, default=None, help="二手卖方费率（默认规则库，昆明1%%）")
+    ap.add_argument("--buyer-rate", type=float, default=None,
+                    help="二手买方费率，用小数（0.02 = 2%%，默认规则库）")
+    ap.add_argument("--seller-rate", type=float, default=None,
+                    help="二手卖方费率，用小数（0.01 = 1%%，默认规则库）")
     ap.add_argument("--rate", type=float, default=None, help="渠道固定点位（如 0.03）")
     ap.add_argument("--tiers", default=None,
                     help="渠道阶梯点位 '金额上限:费率;...'（与--rate二选一；给阶梯则双算法并排）")
@@ -125,6 +127,11 @@ def main() -> None:
     if args.scene == "resale":
         buyer_rate = args.buyer_rate if args.buyer_rate is not None else float(rules.get("resale_buyer_rate", 0.02))
         seller_rate = args.seller_rate if args.seller_rate is not None else float(rules.get("resale_seller_rate", 0.01))
+        # 单位防呆：本工具费率用小数，其它计算器多用百分数，混用会差 100 倍
+        for label, val in (("--buyer-rate", buyer_rate), ("--seller-rate", seller_rate)):
+            if val > 0.2:
+                print(f"⚠️ 单位提醒：{label} {val:g} 被当作小数处理 → {val*100:g}%。"
+                      f"若你本意是 {val:g}%，请改写成 {val/100:g}", file=sys.stderr)
         disc = args.discount if args.discount is not None else 1.0
         b = base * buyer_rate * disc
         s = base * seller_rate * disc

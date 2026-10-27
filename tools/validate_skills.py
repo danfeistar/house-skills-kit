@@ -180,6 +180,27 @@ def check_spec_coverage(names, strict=False):
     return 1 if (strict and missing_total) else 0
 
 
+def check_readme_boundary(names):
+    """每个技能 README 必须有「什么时候不要用我」边界段，且至少给 2 条走向别的技能的分流。
+    理由：技能库最常见的误用是"拿对工具做错事"，边界段是使用者判断该不该打开它的第一道门。"""
+    errors = []
+    for n in names:
+        p = os.path.join(SKILLS, n, "README.md")
+        if not os.path.isfile(p):
+            errors.append("%s: 缺少 README.md（应当说明适用谁/怎么用/什么时候不要用我）" % n)
+            continue
+        with open(p, encoding="utf-8") as f:
+            text = f.read()
+        if "什么时候不要用我" not in text:
+            errors.append("%s: README 缺少「什么时候不要用我」边界段" % n)
+            continue
+        sec = text.split("什么时候不要用我", 1)[1]
+        bullets = re.findall(r"^- \*\*.+?\*\* → ", sec, re.M)
+        if len(bullets) < 2:
+            errors.append("%s: 边界段要有至少 2 条「什么场景 → 该用哪个技能」的分流" % n)
+    return errors
+
+
 def main():
     quiet = "--quiet" in sys.argv
     names = sorted(n for n in os.listdir(SKILLS) if os.path.isdir(os.path.join(SKILLS, n)))
@@ -191,6 +212,7 @@ def main():
         all_errors += e
         all_warnings += w
     all_errors += check_readme_links()
+    all_errors += check_readme_boundary(names)
     all_errors += scan_secrets()
     all_errors += compile_calc_toolkit()
 

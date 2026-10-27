@@ -21,5 +21,16 @@
 - activity-organization-sop：活动联合获客
 - sales-lead-grading：客户登记和跟进
 
+## 什么时候不要用我
+
+这个技能有明确边界，用错场景会得到看似正确但方向相反的结论：
+
+- **渠道配比设计、依赖度红线、佣金档位与跳点** → `channel-management-advisor`（决策层）；本技能是执行层
+- **佣金、税费的具体金额核算** → `calc-toolkit/commission.py`（`--scene channel`，支持跳点双算）
+- **报备与归属的系统实现** → 内部 CRM 与流程配置，本技能只给规则
+- **单客户成交与带看话术** → `broker-client-deal-sop` / `sales-closing-sop`
+
+本技能不提供政策数字与法律结论：一律按当地当期公告现查。
+
 ## 状态
 - v0.1：准入分层、政策培训、报备交接、判客仲裁、佣金对账、复盘和合规红线

@@ -51,7 +51,9 @@ cp -r skills/* ~/.claude/skills/
 - 策划：蓄客排期 → presale-marketing-sop；竞品踩盘 → competitive-intel-sop；物料与示范区 → marketing-materials-sop；活动 → activity-organization-sop；价格优惠 → pricing-incentive-release-sop；开盘战役 → launch-integrated-campaign-sop；工程播报 → engineering-progress-broadcast-sop；老带新 → customer-advocacy-referral-sop
 - 决策层：甲方经营/去化卡壳 → developer-sales-advisor；渠道与佣金政策 → channel-management-advisor
 - 购房者：buyer-first-home-advisor
+- 业主：要卖房 → owner-sell-home-advisor；要出租 → owner-rental-advisor
 - 自媒体：property-media-creator
+- 用之前先看该技能 README 的「什么时候不要用我」，场景不对就换技能，不要硬用
 - 一切数字测算 → skills/calc-toolkit（禁止口算）
 ```
 
@@ -89,7 +91,7 @@ python3 tools/validate_skills.py --quiet
 
 ---
 
-## 3. 三个真实场景，看一遍就会用
+## 3. 四个真实场景，看一遍就会用
 
 ### 场景一：二手经纪人接到一个"预算 150 万想看两房"的客户
 
@@ -110,15 +112,25 @@ python3 tools/validate_skills.py --quiet
 2. 答完需求七问 → 出「预算三线」（舒适线/上限线/极限线，含月供）。
 3. 交付：候选盘打分卡对比 → 看房检查清单 → **结论必须三选一：买 / 不买 / 再看**，附三条理由与下一步。
 
+### 场景四：业主自己卖房或出租
+
+1. 卖房读 `skills/owner-sell-home-advisor/SKILL.md`，出租读 `skills/owner-rental-advisor/SKILL.md`。
+2. **先过「必问信息」**：卖房要问清"最晚什么时候必须拿到钱"、权属状态（抵押/共有/租约/户口/学位）、底线净得；出租要问清空置多久、能否配家具、是否配合备案。
+3. 数字：
+   - 卖房——`tax.py`（卖方税费）+ `commission.py --scene resale`（中介费，**费率用小数 0.01=1%**）+ `prepay.py`（解押）+ `deposit.py`（定金违约）→ 出「净得价」
+   - 出租——`rent.py --net`（毛/净回报，**空置与税负用百分数 15=15%**）+ `holding.py`（空置一个月亏多少）+ `buy_vs_invest.py`（出租 vs 出售 vs 理财、打平涨幅）
+4. 交付：卖房给「卖房决策一页纸」，出租给「出租决策一页纸」；两页纸都有模板，填不满说明还没到能挂牌/能带看的状态。
+
 ---
 
-## 4. 使用纪律（这五条决定你能不能拿到能用的东西）
+## 4. 使用纪律（这六条决定你能不能拿到能用的东西）
 
-1. **先问后答**：`SKILL.md` 的「必问信息」不齐时，让 AI 追问，别让它猜。猜出来的方案在现场一定被打回。
-2. **数字只走 calc-toolkit**：任何价格、税费、月供、佣金、得房率，一律跑脚本，不口算、不给"大概"。
-3. **政策现查**：税费、限购、学区、公积金额度，按当地当期公告现查。技能里故意不写城市数字，写死的数字过期比没有更糟。
-4. **对内/对外分版**：议价底牌、客户分级、渠道成本属于对内；给客户只出算价单、方案对比与检查清单。
-5. **带数据时间戳交付**：每个数字后面写清"取数日期 + 来源"，价格类超过 30 天必须重取。
+1. **先看边界再看内容**：每个技能的 `README.md` 都有「什么时候不要用我」一节——先确认这个场景该不该用它，再读 `SKILL.md`。用错技能比不用更糟，结论方向会反。
+2. **先问后答**：`SKILL.md` 的「必问信息」不齐时，让 AI 追问，别让它猜。猜出来的方案在现场一定被打回。
+3. **数字只走 calc-toolkit**：任何价格、税费、月供、佣金、得房率，一律跑脚本，不口算、不给"大概"。
+4. **政策现查**：税费、限购、学区、公积金额度，按当地当期公告现查。技能里故意不写城市数字，写死的数字过期比没有更糟。
+5. **对内/对外分版**：议价底牌、客户分级、渠道成本属于对内；给客户只出算价单、方案对比与检查清单。
+6. **带数据时间戳交付**：每个数字后面写清"取数日期 + 来源"，价格类超过 30 天必须重取。
 
 ---
 
@@ -134,6 +146,23 @@ python3 tools/validate_skills.py --quiet
 
 ---
 
+## 5.1 参数单位：最容易踩的一脚
+
+同一个仓库里的计算器，参数单位并不统一（历史原因），混用会差 100 倍：
+
+| 工具 | 参数 | 单位 | 正确写法 |
+|---|---|---|---|
+| `commission.py` | `--buyer-rate` `--seller-rate` | **小数** | `--seller-rate 0.01` = 1% |
+| `commission.py` | `--bonus-rate` `--rebate` `--splits` | 小数 | `--rebate 0.3` = 返 30% |
+| `efficiency.py` | `--use-coef` | **小数** | `--use-coef 0.88` = 88% |
+| `rent.py` | `--vacancy` `--tax-rate` `--maint` `--target-yield` | **百分数** | `--vacancy 15` = 15% |
+| `holding.py` | `--vacancy` | **月数** | `--vacancy 1` = 年空置 1 个月 |
+| `holding.py` `tax.py` `prepay.py` `mortgage.py` `capacity.py` | `--rate` `--tax-rate` `--agent` | 百分数 | `--rate 3.1` = 3.1% |
+
+写错时工具会拦你：`--use-coef 88` 会直接报错并提示改成 `0.88`；`commission.py --seller-rate 1` 会提示"被当作小数处理 → 100%，若本意是 1% 请写 0.01"。**看到这两种提示不要绕过，改参数重跑。**
+
+---
+
 ## 6. 按角色速查
 
 | 你是 | 起手技能 | 常用的下一步 |
@@ -144,5 +173,7 @@ python3 tools/validate_skills.py --quiet
 | 营销负责人 | `developer-sales-advisor` | `channel-management-advisor`、`pricing-incentive-release-sop` |
 | 购房者 | `buyer-first-home-advisor` | `calc-toolkit`（月供、全成本） |
 | 自媒体运营 | `property-media-creator` | `calc-toolkit`、`competitive-intel-sop` |
+| 业主（卖房） | `owner-sell-home-advisor` | `calc-toolkit`（卖方税费、中介费、解押、定金） |
+| 业主（出租） | `owner-rental-advisor` | `calc-toolkit`（租回报、持有成本、租 vs 卖） |
 
 全量清单与每个技能的一句话说明见仓库 `README.md`；技能编写与内容标准见 `docs/SKILL-AUTHORING-SPEC.md`。

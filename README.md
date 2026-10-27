@@ -4,7 +4,7 @@
 
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8%2B-3776ab.svg)](https://www.python.org/)
-[![Skills](https://img.shields.io/badge/skills-23-brightgreen.svg)](skills/)
+[![Skills](https://img.shields.io/badge/skills-25-brightgreen.svg)](skills/)
 [![Dependencies](https://img.shields.io/badge/dependencies-zero-success.svg)](#已发布技能)
 [![CI](https://github.com/danfeistar/house-skills-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/danfeistar/house-skills-kit/actions/workflows/validate.yml)
 
@@ -83,6 +83,13 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 
 > 这一线是二手房执业口径（双边议价、产权核验、真房源合规）；面向购房者自己的决策流程见 [buyer-first-home-advisor](skills/buyer-first-home-advisor/)，测算走 [calc-toolkit](skills/calc-toolkit/)。
 
+## 🏠 业主端技能（房产持有人）
+
+| 技能 | 覆盖内容 | 目标读者 |
+|---|---|---|
+| [owner-sell-home-advisor 卖房业主决策助手](skills/owner-sell-home-advisor/) | 卖前决策（该不该卖/置换顺序/持有成本）→ 定价四步（三源锚点 + **净得价倒算** + 挂高的真实代价 + 降价节奏）→ 可看性工程（清空/低成本维修/拍照红线/带看配合）→ 选中介六维比选与**委托条款七项核验** → 议价接单五问与定金违约测算 → 交易流程与**五类高频纠纷预防** → 继承/共有/离婚析产/抵押查封/学位占用/带租约六类特殊情形 | 二手房业主、置换业主、代家人处置房产的成年子女 |
+| [owner-rental-advisor 出租业主决策助手](skills/owner-rental-advisor/) | 该租/该卖/空置三选一（毛净回报 + 空置成本 + **打平涨幅**）→ 租金定价与空置算术 → 房屋准备与合规（隔断群租红线/家具投入回报）→ **合法筛选边界**与十项必备条款 → 履约与纠纷（维修划分/退租四步留痕/欠租处理四步/上门权边界）→ 自管 vs 托管比选 → 合租短租/学位落户/转租等特殊情形 | 出租业主（自管）、考虑托管的业主、代管家人房产者 |
+
 ## 🏢 案场销售线技能（一手销售/案场团队）
 
 | 技能 | 内容 | 适合谁 |
@@ -118,15 +125,16 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | 一手销售/案场 | `sales-talk-library` / `sales-objection-handling` / `sales-closing-sop` / `sales-reception-sop` / `sales-lead-grading` 案场销售线五技能 | ✅ 已发布（L1 主干 7/7 完成） |
 | 购房客户 | `buyer-first-home-advisor` 首购购房顾问（需求澄清/预算三线/选筹打分/看房验真/议价签约/收房税费） | ✅ 已发布 |
 | 房开案场 | `developer-sales-advisor` 开发商销售顾问（甲方决策线：研判/价格/渠道/处方/预算/汇报） | ✅ 已发布 |
-| 一手销售 | 置业顾问跟客助手（含判客/话术） | 排期 |
+| 一手销售 | 置业顾问跟客助手（含判客/话术） | ✅ 已由 `sales-reception-sop` + `sales-lead-grading` + `sales-talk-library` 覆盖 |
 | 二手经纪人 | `broker-listing-sop` + `broker-client-deal-sop` 二手房经纪线（房源开发委托 / 客户匹配成交） | ✅ 已发布（房源端+客户端 2 件） |
 | 渠道分销 | `channel-management-advisor` 渠道管理与分销决策助手（决策层）+ `channel-collaboration-sop`（执行层） | ✅ 已发布 |
 | 房产自媒体 | `property-media-creator` 内容创作助手 | ✅ 已发布 |
+| 业主端 | `owner-sell-home-advisor` 卖房业主决策 + `owner-rental-advisor` 出租业主决策 | ✅ 已发布（卖/租 2 件） |
 
 ## 仓库结构
 
 ```
-skills/            # 23 个独立技能，每个自带 SKILL.md（+ README.md / 正文 / 可选工具）
+skills/            # 25 个独立技能，每个自带 SKILL.md（+ README.md / 正文 / 可选工具）
   calc-toolkit/    #   公共计算工具包 + 35 城规则库（rules/cities.yaml）
   buyer-*/         #   购房客户（C 端）技能
   sales-*/         #   案场销售线技能
@@ -149,7 +157,7 @@ python3 tools/validate_skills.py --spec   # 规范覆盖率自检：12 段必备
 python3 tools/check_refs.py           # 引用完整性：计算器脚本 / 兄弟技能目录 / Part 编号是否真实存在
 ```
 
-当前状态：**23 个技能，六段覆盖 23/23**。新增技能请按 [docs/SKILL-AUTHORING-SPEC.md](docs/SKILL-AUTHORING-SPEC.md) 写，`--spec` 会指出缺哪段。
+当前状态：**25 个技能，六段覆盖 25/25**。新增技能请按 [docs/SKILL-AUTHORING-SPEC.md](docs/SKILL-AUTHORING-SPEC.md) 写，`--spec` 会指出缺哪段。
 
 CI（GitHub Actions）在每次 push 与 PR 上跑：技能自检 → 计算器冒烟 → 每个工具 `--help` → 零依赖渲染 → 渲染可复现性。
 
