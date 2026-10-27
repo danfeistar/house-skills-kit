@@ -8,6 +8,27 @@
 
 ## [Unreleased]
 
+（下一个版本的内容写在这里）
+
+## [v1.10.0] — 2026-10-28
+
+**规范落地版：把「六段」从规范变成每个技能里真实存在的东西。**
+
+- **18 个技能补齐「规范六段」**（必问信息 / 知识库与数据来源 / 目标读者 / 写作风格 / 输出格式 / 数据时间戳），`--spec` 由 5/23、缺 108 段 → **23/23 达标、缺 0 段**：
+  - 案场执行 6 件：`sales-reception-sop`、`sales-closing-sop`、`sales-objection-handling`、`sales-mortgage-sop`、`sales-opening-sop`、`sales-talk-library`
+  - 二手经纪 1 件：`broker-client-deal-sop`
+  - 策划 6 件：`presale-marketing-sop`、`competitive-intel-sop`、`marketing-materials-sop`、`activity-organization-sop`、`pricing-incentive-release-sop`、`engineering-progress-broadcast-sop`
+  - 战役与关系 2 件：`launch-integrated-campaign-sop`、`customer-advocacy-referral-sop`
+  - 决策层 2 件：`developer-sales-advisor`、`channel-management-advisor`
+  - 购房者 1 件：`buyer-first-home-advisor`
+- **`docs/QUICKSTART.md`（新增，7.6KB）** —— 面向使用者的 5 分钟上手：区分 `SKILL.md`/playbook/README 各自什么时候读；三种装法（Claude Code 项目级与用户级、Codex/其他 agent 的 AGENTS.md 路由片段、临时粘贴）；三条验证命令与真实输出；三个真实场景走查（二手配房 / 策划竞品报告 / 购房者选筹）；五条使用纪律；五个常见坑表；按角色速查表
+- **README 首屏加 QUICKSTART 入口**，使用者不必先读完整技能表
+- 内容纪律：六段补齐一律**只加不改**——不删原文、不改 Part 编号、不动既有话术，避免破坏其他技能对 Part 的交叉引用
+- `--spec` 维持软性检查（只提示不报错）；新增 **`--spec-strict`**（缺段即返回非零），已接入 CI：`validate.yml` 新增「规范覆盖率自检」步骤，今后新增技能缺六段会被直接拦下
+- `CONTRIBUTING.md` 技能内容标准补两行：六段必备（含 CI 拦截说明）、上手成本（新技能要能对应 QUICKSTART 角色速查表）
+
+## [v1.9.0] — 2026-10-27
+
 - **`skills/property-media-creator`（房产自媒体博主内容助手）** —— 补上最后一个空缺角色线（房产自媒体），八 Part：
   - Part 1 三圈定位与五类人设、差异化四问、起号前 10 条内容安排
   - Part 2 四类选题与四源采集法、选题卡模板、月度淘汰规则
@@ -19,7 +40,7 @@
   - Part 8 四类变现路径、三处披露义务、三段式报价、风险提示
 - **`docs/SKILL-AUTHORING-SPEC.md`（技能编写规范 v1）** —— 对照 CoWork 144 专家实测（我方六段覆盖 0/19）确立 12 段必备结构，新增「必问信息/知识库与数据来源/目标读者/写作风格/输出格式/数据时间戳」六个必备段；`property-media-creator` 为首个达标样板
 - **`tools/validate_skills.py --spec`** —— 新增软性检查：逐技能列出六段缺失项，只提示不报错（不阻塞存量 22 个技能）
-（下一个版本的内容写在这里）
+
 
 ## [v1.8.0] — 2026-10-27
 

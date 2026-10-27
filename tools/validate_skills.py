@@ -157,8 +157,9 @@ SPEC_SECTIONS = [
 ]
 
 
-def check_spec_coverage(names):
-    """--spec：软性检查必备 12 段中的六个新增段覆盖情况（只提示，不报错）。"""
+def check_spec_coverage(names, strict=False):
+    """--spec：软性检查必备 12 段中的六个新增段覆盖情况（只提示，不报错）。
+    --spec-strict：同样输出，但缺失即返回 1，供 CI 拦截新增的不达标技能。"""
     rows, missing_total = [], 0
     for n in names:
         p = os.path.join(SKILLS, n, "SKILL.md")
@@ -176,14 +177,14 @@ def check_spec_coverage(names):
         print("  %-32s %s%s" % (n, mark, detail))
     ok = sum(1 for _, m in rows if not m)
     print("\n达标 %d/%d 个技能（六段齐）；合计缺失 %d 段。" % (ok, len(rows), missing_total))
-    return 0
+    return 1 if (strict and missing_total) else 0
 
 
 def main():
     quiet = "--quiet" in sys.argv
     names = sorted(n for n in os.listdir(SKILLS) if os.path.isdir(os.path.join(SKILLS, n)))
-    if "--spec" in sys.argv:
-        return check_spec_coverage(names)
+    if "--spec" in sys.argv or "--spec-strict" in sys.argv:
+        return check_spec_coverage(names, strict="--spec-strict" in sys.argv)
     all_errors, all_warnings = [], []
     for n in names:
         e, w = check_skill(n)

@@ -14,6 +14,8 @@
 
 > 🇨🇳 模板通用、零外部依赖（纯 Python 标准库）：不绑定任何平台与数据商，装进 Claude / 其他 Agent 均可。
 
+> **第一次用？先看 [docs/QUICKSTART.md](docs/QUICKSTART.md)** —— 5 分钟装好（Claude Code / Codex / 临时粘贴三种装法）+ 三个真实场景走一遍（二手经纪人配房、策划竞品报告、购房者选筹）+ 5 条使用纪律与 5 个常见坑。
+
 ## 已发布技能
 
 ### 🧮 calc-toolkit · 公共计算工具包（全身份通用）
@@ -143,7 +145,10 @@ tools/             # 仓库自检脚本（结构与文档校验）
 
 ```bash
 python3 tools/validate_skills.py     # 结构与文档自检：技能目录/frontmatter/链接/疑似密钥/编译
+python3 tools/validate_skills.py --spec   # 规范覆盖率自检：12 段必备结构（六段新增段）逐技能核对
 ```
+
+当前状态：**23 个技能，六段覆盖 23/23**。新增技能请按 [docs/SKILL-AUTHORING-SPEC.md](docs/SKILL-AUTHORING-SPEC.md) 写，`--spec` 会指出缺哪段。
 
 CI（GitHub Actions）在每次 push 与 PR 上跑：技能自检 → 计算器冒烟 → 每个工具 `--help` → 零依赖渲染 → 渲染可复现性。
 

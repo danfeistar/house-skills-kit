@@ -25,6 +25,9 @@ jobs:
       - name: 技能结构与文档自检
         run: python3 tools/validate_skills.py
 
+      - name: 规范覆盖率自检（12 段必备结构，缺失即失败）
+        run: python3 tools/validate_skills.py --spec-strict
+
       - name: 计算器冒烟（零依赖，直接跑）
         run: |
           set -e

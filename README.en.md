@@ -8,6 +8,8 @@ This repository packages the day-to-day knowledge of Chinese real-estate practit
 
 > 🇨🇳 The content is Chinese-first by design — it encodes how business is actually done in the Chinese market (35-city policy rule library, `认房不认贷` first-home determination, `公积金` loans, `维修基金`, etc.). The skill format is plain `SKILL.md`, so it drops into Claude Code, Hermes, Codex, OpenClaw, or any agent that reads Markdown-based skills.
 
+> **First time here? Read [docs/QUICKSTART.md](docs/QUICKSTART.md)** (Chinese) — 5-minute setup for three runtimes (Claude Code project/user level, Codex via `AGENTS.md` routing, or paste-in-a-chat), three real walk-throughs (a resale agent matching a buyer, a planner building a competitor report, a first-home buyer deciding), plus the usage discipline and the five most common mistakes.
+
 ## Why this exists
 
 Searching GitHub, ClawHub, and the major AI app marketplaces for AI skills built for Chinese real estate turns up essentially nothing — despite the industry transacting on the order of ten trillion RMB a year. So this is an attempt at the first, and hopefully most practical, Chinese real-estate AI skill library: business knowledge from the field, turned into skills an agent can actually execute.
