@@ -14,6 +14,8 @@ license: Apache-2.0
 |---|---|---|
 | **calc-toolkit 公共计算工具包** | `skills/calc-toolkit/` | 全身份：19 件工具——房贷月供、二手房交易全成本、一手房交易成本、购房能力、提前还款、首套二套认定、楼层折扣、公积金额度、佣金提成、得房率换算、租金回报、LPR变动影响。35 城规则库四层引擎，每个数字可追溯，全参数 `--set` 可覆盖 |
 | **buyer-first-home-advisor 首购购房顾问** | `skills/buyer-first-home-advisor/` | 购房客户（C 端自住）：需求澄清七问、预算三线法、资格与首套三口径、片区五维+楼盘百分制打分卡、一手五看法+二手15项验房、议价与合同十条、贷款与提前还款、收房税费、八类坑与红线、三句话收口 |
+| **broker-listing-sop 二手房源开发与委托 SOP** | `skills/broker-listing-sop/` | 二手房经纪人/门店经理：六渠道房源开发与三筛、业主动因与价格校准四步、委托协议七要素与独家对价、实勘十二项与真房源档案、四档维护节奏、跳单证据链 |
+| **broker-client-deal-sop 二手房客户匹配与成交 SOP** | `skills/broker-client-deal-sop/` | 二手房经纪人/交易专员：需求七问与资格预判、三维匹配打分、一场三套带看与二选一、买卖双线议价、七步交易流程与交房五交接、九类风险核验、佣金与跳单争议 |
 | **sales-talk-library 案场话术库** | `skills/sales-talk-library/` | 置业顾问/销售经理：地段/配套/户型/竞品/品牌五域标准说辞、分客群变通与合规红线 |
 | **sales-objection-handling 客户异议处理** | `skills/sales-objection-handling/` | 置业顾问/销售经理：高频异议三段式应对、禁语清单与演练 |
 | **sales-closing-sop 算价与逼定 SOP** | `skills/sales-closing-sop/` | 置业顾问/销售主管：算价动作链、议价博弈、逼定信号与团队配合逼定 |
@@ -32,13 +34,13 @@ license: Apache-2.0
 | **launch-integrated-campaign-sop 节点开盘整合营销 SOP** | `skills/launch-integrated-campaign-sop/` | 营销负责人/策划：开盘战役简报、九格协同、节点倒排、资产包、整合承接、全员演练、开盘衔接与盘后复盘 |
 | **marketing-review 模块（月度营销复盘与经营看板）** | `template/modules/marketing-review.md.tmpl` | 策划/营销：口径锁定、漏斗与房源结构、来源费效、异常升级与行动台账 |
 | 案场销售顾问（排期） | `skills/`（待建） | 房开案场 |
-| 经纪人作业助手（排期） | `skills/`（待建） | 二手经纪人 |
+| **二手经纪线（broker-listing-sop / broker-client-deal-sop）** | `skills/broker-*/` | 二手经纪人/经纪公司 |
 | 渠道管理助手（排期） | `skills/`（待建） | 渠道分销 |
 | 内容创作助手（排期） | `skills/`（待建） | 房产自媒体 |
 
 ## 两条生产线
 
-1. **`skills/` 直发技能**：独立 SKILL.md，发布 ClawHub 各自成技能（现有 18 个：calc-toolkit、buyer-first-home-advisor 与案场/策划线十六个）。
+1. **`skills/` 直发技能**：独立 SKILL.md，发布 ClawHub 各自成技能（现有 21 个：calc-toolkit、buyer-first-home-advisor、developer-sales-advisor、broker 二手经纪线 2 个，与案场/策划线十六个）。
 2. **`template/` 品牌生成骨架**：4 类角色原型（consumer-buy / developer-sales / brokerage-agent / channel-distributor）× 30 业务模块，`python3 render.py --config brand.yaml --out output/my-brand/` 一份配置生成品牌专属顾问技能，`install.sh` 装进任意 Agent。
 
 ## 使用顺序建议

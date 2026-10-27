@@ -4,7 +4,7 @@
 
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8%2B-3776ab.svg)](https://www.python.org/)
-[![Skills](https://img.shields.io/badge/skills-19-brightgreen.svg)](skills/)
+[![Skills](https://img.shields.io/badge/skills-21-brightgreen.svg)](skills/)
 [![Dependencies](https://img.shields.io/badge/dependencies-zero-success.svg)](#已发布技能)
 [![CI](https://github.com/danfeistar/house-skills-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/danfeistar/house-skills-kit/actions/workflows/validate.yml)
 
@@ -72,6 +72,15 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 
 > 这一线只做决策层的判断与取舍；执行层动作（接待/判客/话术/逼定/开盘）见下方案场销售线，测算一律走 [calc-toolkit](skills/calc-toolkit/)。
 
+## 🔑 二手经纪线技能（经纪公司/二手房门店）
+
+| 技能 | 内容 | 适合谁 |
+|---|---|---|
+| [broker-listing-sop 二手房源开发与委托 SOP](skills/broker-listing-sop/) | 六渠道房源开发与试水盘三筛 → 业主动因三问 + 价格锚点溯源 + 校准四步（市场/成本/时间/挂高代价）→ 三段式报价建议 → 委托三类对比与**协议七要素**（独家必带对价）→ 实勘十二项核验 + 拍照标准 + 房源卡字段 → 四档分级维护与 30/60/90 天触发 → 跳单信号 + 证据链四件套 + 佣金主张流程 | 二手房经纪人、门店经理、经纪公司运营（真房源合规） |
+| [broker-client-deal-sop 二手房客户匹配与成交 SOP](skills/broker-client-deal-sop/) | 需求澄清七问 + 首付四笔漏算 + 资格与贷款预判（只预判不承诺）→ 三维匹配打分（硬约束/软需求/风险扣分，每套必带"代价"）→ 一场三套带看动线与二选一话术 + 不表态四因排查 → 买卖双线议价 + 让步阶梯 + 僵局三破法 → 七步交易流程（定金/居间/网签/资金监管/贷款/过户）与**交房五交接** → **九类风险核验清单** → 佣金口径四件事与跳单应对 | 二手房经纪人、门店经理、交易专员 |
+
+> 这一线是二手房执业口径（双边议价、产权核验、真房源合规）；面向购房者自己的决策流程见 [buyer-first-home-advisor](skills/buyer-first-home-advisor/)，测算走 [calc-toolkit](skills/calc-toolkit/)。
+
 ## 🏢 案场销售线技能（一手销售/案场团队）
 
 | 技能 | 内容 | 适合谁 |
@@ -106,17 +115,18 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 | 购房客户 | `buyer-first-home-advisor` 首购购房顾问（需求澄清/预算三线/选筹打分/看房验真/议价签约/收房税费） | ✅ 已发布 |
 | 房开案场 | `developer-sales-advisor` 开发商销售顾问（甲方决策线：研判/价格/渠道/处方/预算/汇报） | ✅ 已发布 |
 | 一手销售 | 置业顾问跟客助手（含判客/话术） | 排期 |
-| 二手经纪人 | 经纪人作业助手 | 排期 |
+| 二手经纪人 | `broker-listing-sop` + `broker-client-deal-sop` 二手房经纪线（房源开发委托 / 客户匹配成交） | ✅ 已发布（房源端+客户端 2 件） |
 | 渠道分销 | 渠道管理助手 | 排期 |
 | 房产自媒体 | 内容创作助手 | 排期 |
 
 ## 仓库结构
 
 ```
-skills/            # 19 个独立技能，每个自带 SKILL.md（+ README.md / 正文 / 可选工具）
+skills/            # 21 个独立技能，每个自带 SKILL.md（+ README.md / 正文 / 可选工具）
   calc-toolkit/    #   公共计算工具包 + 35 城规则库（rules/cities.yaml）
   buyer-*/         #   购房客户（C 端）技能
   sales-*/         #   案场销售线技能
+  broker-*/        #   二手经纪线技能（房源端/客户端）
 template/
   archetypes/      # 4 类角色原型（购房者 / 房开销售 / 经纪经纪人 / 渠道分销）
   modules/         # 31 个业务模块，按需拼装

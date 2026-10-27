@@ -58,6 +58,15 @@ national default → city (e.g. Kunming high-rise maintenance fund 90 CNY/㎡) �
 
 > The advisory line handles judgment and trade-offs only; floor execution lives in the sales-floor line below, and every calculation runs through [calc-toolkit](skills/calc-toolkit/).
 
+### 🔑 Resale brokerage line (brokerages and second-hand stores)
+
+| Skill | Content |
+|---|---|
+| [broker-listing-sop](skills/broker-listing-sop/) | Six sourcing channels and a three-filter test for half-hearted listings, seller-motivation questions, four-step price-expectation calibration (market / cost / time / cost of overpricing), three-tier price recommendation, three mandate types with seven mandatory clauses (exclusivity always comes with consideration), a 12-item on-site verification checklist plus photo standards and the listing record, four-tier maintenance with 30/60/90-day triggers, and broker-jumping signals with the four-piece evidence chain |
+| [broker-client-deal-sop](skills/broker-client-deal-sop/) | Seven-question needs clarification with four commonly missed down-payment items, eligibility and loan pre-assessment (assess, never promise), three-dimension matching score (hard constraints / soft preferences / risk deductions — every recommendation states its trade-off), three-property showing structure with either-or closing questions, two-sided negotiation (buyer motives vs seller reasons to hold price) with a concession ladder, seven-step transaction flow through to the five handover items, a nine-category risk checklist, and commission scope with broker-jumping responses |
+
+> This line is written from the practitioner's side (two-sided negotiation, title verification, truthful-listing compliance); buyer-side decision flow lives in [buyer-first-home-advisor](skills/buyer-first-home-advisor/).
+
 ### 🏢 Sales-floor line (new-home sales teams)
 
 | Skill | Content |
