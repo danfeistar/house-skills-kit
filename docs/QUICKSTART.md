@@ -23,19 +23,25 @@
 
 ## 1. 三种装法（选一种就行）
 
-### 装法 A：Claude Code（最省事）
+### 装法 A：Claude Code（最省事，一行命令）
 
-把技能目录整个拷到 Claude Code 的 skills 目录里：
+用仓库自带的安装脚本，别手工 `cp -r`：
 
 ```bash
-# 项目级（只在这个项目里生效，推荐）
-mkdir -p .claude/skills
-cp -r skills/broker-client-deal-sop skills/calc-toolkit .claude/skills/
-
-# 或者用户级（所有项目都能用）
-mkdir -p ~/.claude/skills
-cp -r skills/* ~/.claude/skills/
+bash tools/install_skills.sh --list                       # 先看 26 个技能与一句话说明
+bash tools/install_skills.sh --target ~/.claude/skills    # 用户级：所有项目都能用
+bash tools/install_skills.sh --target .claude/skills      # 项目级：只在这个项目生效
+bash tools/install_skills.sh --target ~/.claude/skills --only owner-sell-home-advisor,broker-lease-sop
+bash tools/install_skills.sh --target .claude/skills --link   # 符号链接：改仓库即生效（自己二次开发用）
 ```
+
+安装脚本的三条纪律：
+
+1. 只写 `--target` 指定的目录，不碰别处；`/` 和家目录本身会被拒绝
+2. **目标里已有内容默认不覆盖**（防止冲掉你改过的版本），要覆盖加 `--force`；被跳过时退出码为 2
+3. 每次写一份 `house-skills-kit.manifest.json`：版本 + 每个技能 `SKILL.md` 的 sha256 + 安装时间，升级时能一眼看出哪些技能变了
+
+手工装也行（不推荐，容易漏文件）：`mkdir -p ~/.claude/skills && cp -R skills/* ~/.claude/skills/`。
 
 之后在对话里直接说业务话（见第 3 节场景），Claude Code 会自己挑对应技能。
 

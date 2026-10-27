@@ -58,3 +58,11 @@ python3 tools/validate_skills.py
 ## 回应时间
 
 Issue 与 PR 一般在几天内回应。如果一周没动静，欢迎 @ 作者催一次——不是不理，是可能漏看了。
+
+## 改计算器必须跑回归
+
+```bash
+python3 -m unittest discover -s tests -v
+```
+
+测试只钉"确定的"：单位口径（百分数 vs 小数不能混）、公式自洽（全成本 = 税费 + 费用）、越界必须拦（`--use-coef 88`、`--vacancy 1500`）。如果新功能有新的口径约定，在 `tests/test_calc_toolkit.py` 里补一条断言，并在 `skills/calc-toolkit/README.md` 的单位表里登记。

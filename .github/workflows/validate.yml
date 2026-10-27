@@ -37,6 +37,22 @@ jobs:
       - name: 内部链接可达（改名/删文件后的死链）
         run: python3 tools/check_links.py
 
+      - name: 计算器回归测试（单位口径 / 公式自洽 / 越界必须拦）
+        run: python3 -m unittest discover -s tests -v
+
+      - name: 安装脚本自检（装得进、幂等、不冲掉别人的改动）
+        run: |
+          set -e
+          bash tools/install_skills.sh --target "$RUNNER_TEMP/inst" | tail -3
+          bash tools/install_skills.sh --target "$RUNNER_TEMP/inst" | tail -3
+          test -f "$RUNNER_TEMP/inst/house-skills-kit.manifest.json"
+          echo "手工改动" >> "$RUNNER_TEMP/inst/broker-lease-sop/SKILL.md"
+          if bash tools/install_skills.sh --target "$RUNNER_TEMP/inst" --only broker-lease-sop; then
+            echo "改动过的技能被静默覆盖了，安装脚本护栏失效"; exit 1
+          fi
+          echo "护栏生效：改动过的技能不会被静默覆盖"
+          bash tools/install_skills.sh --target "$RUNNER_TEMP/inst" --only broker-lease-sop --force | tail -2
+
       - name: 计算器冒烟（零依赖，直接跑）
         run: |
           set -e
