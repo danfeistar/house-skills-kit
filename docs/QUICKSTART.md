@@ -54,7 +54,7 @@ bash tools/install_skills.sh --target .claude/skills --link   # 符号链接：�
 
 处理任何房产相关任务前，先读 `house-skills-kit/skills/<技能名>/SKILL.md`，按其中的「必问信息」先把缺的字段问齐，再按「输出格式」交付。
 
-- 二手房：房源委托 → broker-listing-sop；客户配房/议价/过户 → broker-client-deal-sop
+- 二手房：房源委托 → broker-listing-sop；客户配房/议价 → broker-client-deal-sop；成交后过户与交房 → resale-transaction-sop；交房当天的专业验收 → handover-inspection-advisor
 - 一手案场：首次接待 → sales-reception-sop；判客分级 → sales-lead-grading；异议 → sales-objection-handling；谈价逼定 → sales-closing-sop；按揭 → sales-mortgage-sop；开盘执行 → sales-opening-sop
 - 策划：蓄客排期 → presale-marketing-sop；竞品踩盘 → competitive-intel-sop；物料与示范区 → marketing-materials-sop；活动 → activity-organization-sop；价格优惠 → pricing-incentive-release-sop；开盘战役 → launch-integrated-campaign-sop；工程播报 → engineering-progress-broadcast-sop；老带新 → customer-advocacy-referral-sop
 - 决策层：甲方经营/去化卡壳 → developer-sales-advisor；渠道与佣金政策 → channel-management-advisor
@@ -93,7 +93,7 @@ python3 skills/calc-toolkit/mortgage.py --price 1000000 --downpay 30 --years 30
 # ② 渠道跳点能算（全额跳档 vs 分段累进，差多少一目了然）
 python3 skills/calc-toolkit/commission.py --scene channel --amount 30000000 --tiers '20000000:0.02;999999999:0.025'
 
-# ③ 仓库自检（23 个技能 / 0 错误才算装对了）
+# ③ 仓库自检（30 个技能 / 0 错误才算装对了）
 python3 tools/validate_skills.py --quiet
 ```
 
@@ -178,6 +178,8 @@ python3 tools/validate_skills.py --quiet
 | 一手案场顾问 | `sales-reception-sop` | `sales-lead-grading` → `sales-closing-sop` |
 | 二手房经纪人（买卖） | `broker-listing-sop` / `broker-client-deal-sop` | `calc-toolkit`（佣金、税费） |
 | 二手房经纪人（租赁） | `broker-lease-sop` | `calc-toolkit`（`commission.py --scene lease` 佣金分摊） |
+| 二手房交易（过户/赎楼/网签/资金监管） | `resale-transaction-sop` | `calc-toolkit`（`tax.py` 买卖分列、`deposit.py` 定金罚则、`loanterm.py`、`status.py`） |
+| 交房验收（新房或二手收房） | `handover-inspection-advisor` | `calc-toolkit`（`area_error.py` 面积补退、`efficiency.py` 得房率、`newhome.py` 交房费用） |
 | 策划 | `presale-marketing-sop` | `competitive-intel-sop`、`marketing-materials-sop` |
 | 营销负责人 | `developer-sales-advisor` | `channel-management-advisor`、`pricing-incentive-release-sop` |
 | 购房者 | `buyer-first-home-advisor` | `calc-toolkit`（月供、全成本） |

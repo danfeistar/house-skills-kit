@@ -102,6 +102,13 @@ python3 skills/calc-toolkit/prepay.py --loan 1000000 --rate 3.1 --years 30 --pai
 
 > 商业买的是现金流，住宅买的是预期。测算走 `commercial.py`（NOI/cap 口径），别用住宅的租售比与税费经验。
 
+## 🤝 交易与交付线（成交之后：过户与收房）
+
+| 技能 | 内容 | 适合谁 |
+|---|---|---|
+| [resale-transaction-sop 二手房交易全流程与风险](skills/resale-transaction-sop/) | 12 节点交易时间轴与三方责任边界 → **查档查六项**（权属/抵押/查封与限制/共有/租赁/限售）→ 三个"金"的区别与定金罚则 → **合同必写 12 条**（含贷款不批三选一）→ 网签与资金监管 → 贷款审批五个不通过原因 → 税费买卖分列与过户顺序 → 抵押注销/赎楼三条路 → 交房六件事与**尾款保留条款** → **七类翻车现场**（查封/共有人缺席/租客不搬/户口不迁/面积误差/卖方毁约/批贷失败）。配套 `tax.py` `deposit.py` `loanterm.py` `status.py` `area_error.py` | 二手经纪人、门店店长、交易管家、自助交易的买卖双方 |
+| [handover-inspection-advisor 交房验收](skills/handover-inspection-advisor/) | 验收三条底线（先验后签/书面留痕/整改闭环）→ 到访资料与**200 元工具清单** → 公共部位六处先行 → **室内八大系统实测**（给排水/电气/防水闭水/门窗气密/空鼓/层高开间/烟道通风/附属）→ 面积误差 3% 红线与赠送面积处理 → **问题清单七列模板**与拖延时的三级升级 → 收房后 90 天保修主张三要素。配套 `area_error.py` `efficiency.py` `newhome.py` | 购房者本人、置业顾问与客服、第三方验房师、房产自媒体 |
+
 ## 🏢 案场销售线技能（一手销售/案场团队）
 
 | 技能 | 内容 | 适合谁 |
@@ -174,7 +181,7 @@ python3 tools/check_links.py              # Markdown 相对链接是否还有效
 python3 -m unittest discover -s tests -v   # 计算器回归测试（单位口径/公式自洽/越界拦截）
 ```
 
-当前状态：**28 个技能，六段覆盖 28/28**。新增技能请按 [docs/SKILL-AUTHORING-SPEC.md](docs/SKILL-AUTHORING-SPEC.md) 写，`--spec` 会指出缺哪段。
+当前状态：**30 个技能，六段覆盖 30/30**。新增技能请按 [docs/SKILL-AUTHORING-SPEC.md](docs/SKILL-AUTHORING-SPEC.md) 写，`--spec` 会指出缺哪段。
 
 CI（GitHub Actions）在每次 push 与 PR 上跑：技能自检 → 计算器冒烟 → 每个工具 `--help` → 零依赖渲染 → 渲染可复现性。
 

@@ -1,6 +1,6 @@
 ---
 name: house-skills-kit
-description: 房产AI技能仓库总览：按身份分技能（房开企业/经纪公司/渠道分销/购房者业主/二手经纪人/一手销售/房产自媒体）。共28个独立技能：calc-toolkit公共计算工具包、购房客户线首购购房顾问、开发商销售顾问、二手经纪线（房源开发与委托/客户匹配与成交/租赁作业）、案场销售线与策划线十六技能（19件收官：房贷月供/二手房全成本/一手房成本/购房能力/提前还款/首套二套认定/楼层折扣/公积金额度/佣金提成/得房率换算/租金回报/LPR变动影响/持有成本/买房vs理财/面积误差补退/违约金定金/房龄贷款年限/楼面价货值/日照楼间距，35城规则库四层引擎，每个数字可追溯）；template/为品牌顾问技能生成骨架（4类角色原型×31业务模块）。Use when 需要房产相关AI技能的安装、使用、生成或按身份选型。
+description: 房产AI技能仓库总览：按身份分技能（房开企业/经纪公司/渠道分销/购房者业主/二手经纪人/一手销售/房产自媒体）。共30个独立技能：calc-toolkit公共计算工具包、购房客户线首购购房顾问、开发商销售顾问、二手经纪线（房源开发与委托/客户匹配与成交/租赁作业）、交易与交付线（二手房交易全流程与风险/交房验收）、案场销售线与策划线十六技能（19件收官：房贷月供/二手房全成本/一手房成本/购房能力/提前还款/首套二套认定/楼层折扣/公积金额度/佣金提成/得房率换算/租金回报/LPR变动影响/持有成本/买房vs理财/面积误差补退/违约金定金/房龄贷款年限/楼面价货值/日照楼间距，35城规则库四层引擎，每个数字可追溯）；template/为品牌顾问技能生成骨架（4类角色原型×31业务模块）。Use when 需要房产相关AI技能的安装、使用、生成或按身份选型。
 license: Apache-2.0
 ---
 
@@ -43,12 +43,14 @@ license: Apache-2.0
 | 渠道管理助手（排期） | `skills/`（待建） | 渠道分销 |
 | **开发项目投前决策** | `skills/project-feasibility-advisor/` | 开发商投拓/项目总/代建咨询：拿地三指标、定位三问、成本六块、敏感性、决策阈值、可研八章 |
 | **商业物业投资决策** | `skills/commercial-property-advisor/` | 商铺/写字楼/公寓：收益法估值、隐含 cap 反查、租约条款、持有期 IRR、七类陷阱 |
+| **二手房交易全流程与风险** | `skills/resale-transaction-sop/` | 12 节点时间轴、查档六项、定金罚则、合同必写 12 条、资金监管、赎楼三条路、七类翻车现场 |
+| **交房验收** | `skills/handover-inspection-advisor/` | 先验后签、公共部位先行、室内八大系统实测、面积误差 3%、问题清单七列、收房后 90 天保修 |
 | **房产自媒体内容助手** | `skills/property-media-creator/` | 房产自媒体博主 |
 | **业主端（卖房/出租决策）** | `skills/owner-*` | 房产持有人（业主） |
 
 ## 两条生产线
 
-1. **`skills/` 直发技能**：独立 SKILL.md，发布 ClawHub 各自成技能（现有 28 个：calc-toolkit、buyer-first-home-advisor、developer-sales-advisor、project-feasibility-advisor、commercial-property-advisor、broker 二手经纪线 3 个、业主端 2 个，与案场/策划线十六个）。
+1. **`skills/` 直发技能**：独立 SKILL.md，发布 ClawHub 各自成技能（现有 30 个：calc-toolkit、buyer-first-home-advisor、developer-sales-advisor、project-feasibility-advisor、commercial-property-advisor、resale-transaction-sop、handover-inspection-advisor、broker 二手经纪线 3 个、业主端 2 个，与案场/策划线十六个）。
 2. **`template/` 品牌生成骨架**：4 类角色原型（consumer-buy / developer-sales / brokerage-agent / channel-distributor）× 30 业务模块，`python3 render.py --config brand.yaml --out output/my-brand/` 一份配置生成品牌专属顾问技能，`install.sh` 装进任意 Agent。
 
 ## 使用顺序建议

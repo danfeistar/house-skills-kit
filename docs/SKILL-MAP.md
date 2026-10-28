@@ -33,6 +33,8 @@
 | 要接租赁委托、带看、签租约、处理欠租退租 | `broker-lease-sop` |
 | 要看一块地能不能拿、要不要做可研 | `project-feasibility-advisor` |
 | 客户要买商铺/写字楼/公寓，判断值不值 | `commercial-property-advisor` |
+| 单子签了，卡在贷款/赎楼/过户/交房 | `resale-transaction-sop` |
+| 明天去交房，要拿一张清单逐项查 | `handover-inspection-advisor` |
 | **我是业主，要卖房**（挂多少、找谁、什么时候点头） | `owner-sell-home-advisor` |
 | **我是业主，要出租**（租多少、配什么、租客怎么筛） | `owner-rental-advisor` |
 | **我是买家，判断这套该不该买** | `buyer-first-home-advisor` |
@@ -58,6 +60,11 @@
 `broker-listing-sop`（拿售房委托）→ `broker-client-deal-sop`（配房成交）→ `calc-toolkit`（佣金/税费/解押）
 租赁业务另走一条：`broker-lease-sop`（委托核验 → 报价带看 → 筛租客 → 签租约 → 交房 → 退租与欠租）→ `calc-toolkit/commission.py --scene lease`
 交叉：业主自己来问卖房 → 转 `owner-sell-home-advisor`（你只做经纪端，别替业主定价）
+
+**④-b 交易与交付线（成交之后）**
+`broker-client-deal-sop` 谈成之后进入 `resale-transaction-sop`（查档 → 定金与合同 → 网签与资金监管 → 贷款审批 → 缴税过户 → 放款交房），数字走 `calc-toolkit`（`tax.py` / `deposit.py` / `loanterm.py` / `status.py` / `area_error.py`）
+交房当天：二手交房走 `resale-transaction-sop` Part 6；新房/专业验收清单走 `handover-inspection-advisor`（面积误差用 `area_error.py`，费用核对用 `newhome.py`）
+红线：过户前必复检查档（签约前查过不等于过户那天还干净）；没钱进监管就不付大额首付
 
 **⑤ 业主线**
 卖房 `owner-sell-home-advisor`（净得测算 → 定价 → 选中介 → 议价 → 过户）
@@ -87,6 +94,8 @@
 | 租赁委托一页纸 / 带看记录卡 / 房屋交接单 | `broker-lease-sop` | `commission.py --scene lease` `rent.py --net` |
 | 一页纸投前测算 / 敏感性表 / 可研报告 | `project-feasibility-advisor` | `feasibility.py`（盈亏平衡 + 敏感性） |
 | 商业一页纸估值卡 / 隐含 cap 反查 / 租约核对表 | `commercial-property-advisor` | `commercial.py`（NOI / cap / 持有 IRR） |
+| 交易时间轴 / 风险排查表 / 税费买卖分列清单 | `resale-transaction-sop` | `tax.py` `deposit.py` `loanterm.py` `status.py` |
+| 交房验收清单 / 问题清单 / 面积补退核对 | `handover-inspection-advisor` | `area_error.py` `efficiency.py` `newhome.py` |
 | **卖房决策一页纸** | `owner-sell-home-advisor` | `tax.py` `commission.py` `prepay.py` `deposit.py` |
 | **出租决策一页纸** | `owner-rental-advisor` | `rent.py --net` `holding.py` `buy_vs_invest.py` |
 | 购房预算三线表 | `buyer-first-home-advisor` | `capacity.py` `status.py` `fund.py` |
@@ -95,11 +104,12 @@
 
 ---
 
-## 四、三条最容易走错的岔路
+## 四、四条最容易走错的岔路
 
 1. **业主 vs 经纪人**：业主来问"我这房挂多少"，用 `broker-listing-sop` 会得到"怎么说服业主降价"的视角，方向反了 → 用 `owner-sell-home-advisor`。
 2. **执行层 vs 决策层**：要"跟渠道对账"，用 `channel-management-advisor` 会得到一套配比与佣金设计，答案不对题 → 用 `channel-collaboration-sop`。
 3. **卖 vs 租**：明明是出租，翻 `owner-sell-home-advisor` 的净得测算，会漏掉回报率与空置成本 → 用 `owner-rental-advisor`（Part 1 就能给出"留还是卖"的结论）。
+4. **成交前 vs 成交后**：合同已经签了、卡在贷款/赎楼/过户，翻 `broker-client-deal-sop` 会得到配房与议价方法，答不对题 → 用 `resale-transaction-sop`；交房当天的专业验收 → `handover-inspection-advisor`（别用交易流程技能替代验收清单）。
 
 ---
 
