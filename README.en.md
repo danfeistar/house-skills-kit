@@ -52,6 +52,8 @@ national default → city (e.g. Kunming high-rise maintenance fund 90 CNY/㎡) �
 |---|---|---|
 | [buyer-first-home-advisor](skills/buyer-first-home-advisor/) | Seven-question needs clarification → three-line budget (comfort / ceiling / extreme) → eligibility self-check → district five-factor screen + weighted 100-point project scorecard → new-home "five checks" + 15-point resale inspection → negotiation leverage + ten contract clauses → loan options and early repayment → handover and taxes → eight common traps → three-sentence decision summary | First-time buyers, families advising them, agents running buyer-side advisory |
 
+> The buyer-side skill ships a full English playbook ([playbook.en.md](skills/buyer-first-home-advisor/playbook.en.md)) alongside the Chinese `playbook.md` — same ten Parts and the same verified commands, rewritten for English readers rather than translated line-by-line.
+
 ### 🏗 Developer advisory line (decision layer for developers)
 
 | Skill | What it covers |

@@ -8,7 +8,9 @@
 
 ## [Unreleased]
 
-（下一个版本的内容写在这里）
+### 新增
+
+- **英文版 playbook 系列（为国际用户 / OSS 评审补英文正文）启动**：`buyer-first-home-advisor` 新增 `playbook.en.md` —— ten Parts 完整英文正文，命令与 `--help` 参数与中文版同源（全部实跑验证），案例与翻车警示按英文读者重写、非逐句机翻；该技能 README 与根 `README.en.md` 已登记。
 
 ## [v1.15.0] — 2026-10-28
 
