@@ -111,6 +111,8 @@ national default → city (e.g. Kunming high-rise maintenance fund 90 CNY/㎡) �
 | [customer-advocacy-referral-sop](skills/customer-advocacy-referral-sop/) | Service-feedback tiers, testimonial authorization, referral triggers, lead registration, benefit fulfillment, complaint isolation |
 | [launch-integrated-campaign-sop](skills/launch-integrated-campaign-sop/) | Launch-campaign brief, nine-cell coordination, milestone back-planning, asset package, full-staff rehearsal, post-launch review |
 
+> `sales-reception-sop` ships a full English playbook ([reception-playbook.en.md](skills/sales-reception-sop/reception-playbook.en.md)) alongside the Chinese `reception-playbook.md` — same six Parts and the same mechanics, rewritten for English readers rather than translated line-by-line; China-specific sales-office mechanics (rotation, visit-source attribution, the sales-control board, the sand-table) are explained inline, and internal line codes are replaced by actual skill names.
+
 Plus template modules `marketing-review` (monthly marketing review and business dashboard) and `media-lead-growth` (paid media, budget stop-loss, creative testing, lead attribution).
 
 ## Quick start
