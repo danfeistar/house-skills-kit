@@ -113,6 +113,8 @@ national default → city (e.g. Kunming high-rise maintenance fund 90 CNY/㎡) �
 
 > `sales-reception-sop` ships a full English playbook ([reception-playbook.en.md](skills/sales-reception-sop/reception-playbook.en.md)) alongside the Chinese `reception-playbook.md` — same six Parts and the same mechanics, rewritten for English readers rather than translated line-by-line; China-specific sales-office mechanics (rotation, visit-source attribution, the sales-control board, the sand-table) are explained inline, and internal line codes are replaced by actual skill names.
 
+> `sales-talk-library` ships a full English playbook ([domains.en.md](skills/sales-talk-library/domains.en.md)) alongside the Chinese `domains.md` — same five domains and 24 script blocks (location / amenities / floor plan / competitors / brand), each with its standard script, segment variants, and failure warnings; the six compliance red lines (school places, planning citations, data honesty, no competitor bashing, no threat-based closing, no guarantees) are moved up front, and China-specific mechanics (the sand table, annual school-catchment announcements, gift area vs shared area, the existing/under-construction/planned three-state discipline) are explained inline. Verified `calc-toolkit` commands (`efficiency.py` usable-area chain and dual-project comparison, `spacing.py` winter-solstice shading check) are included with real outputs.
+
 Plus template modules `marketing-review` (monthly marketing review and business dashboard) and `media-lead-growth` (paid media, budget stop-loss, creative testing, lead attribution).
 
 ## Quick start
