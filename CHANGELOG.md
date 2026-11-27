@@ -13,6 +13,7 @@
 - **英文版 playbook 系列（为国际用户 / OSS 评审补英文正文）启动**：`buyer-first-home-advisor` 新增 `playbook.en.md` —— ten Parts 完整英文正文，命令与 `--help` 参数与中文版同源（全部实跑验证），案例与翻车警示按英文读者重写、非逐句机翻；该技能 README 与根 `README.en.md` 已登记。
 - **英文版 playbook 第 2 件**：`sales-reception-sop` 新增 `reception-playbook.en.md` —— 六 Part 英文正文（接待动线 / 七维提问树 / 五层画像 / 匹配带看 / 交接模板），机制与中文版同源、案例按英文读者重写；案场特有机制（轮接 / 判客 / 销控表 / 沙盘）带内联英文解释；该技能 README 与根 `README.en.md` 已登记。
 - **英文版 playbook 第 3 件**：`sales-talk-library` 新增 `domains.en.md` —— 五域 24 个话术块的完整英文正文（地段 / 配套 / 户型 / 竞品 / 品牌，每块标准说辞 + 分客群变通 + 翻车警示全保留）；六条合规红线前置，沙盘 / 学区划片口径 / 赠送面积与公摊 / 现有在建规划三态口径带内联英文解释；`efficiency.py` 面积链与双盘比价、`spacing.py` 冬至日照判定共 3 条命令实跑验证后收录；该技能 README 与根 `README.en.md` 已登记。
+- **英文版 playbook 第 4 件**：`sales-objection-handling` 新增 `objections.en.md` —— 四大高频异议（太贵 / 再看看 / 怕烂尾 / 会不会降价）完整英文正文，每条保留顾虑分支表 + 应对话术 + 禁语清单 + 分客群变通五件套，另含二级异议六行索引与 AI 演练模式；五条合规红线前置，预售资金监管账户 / 一房一价与折扣审批制 / 认购单 / 销控表 / 二访机制带内联英文解释；`mortgage.py` 月供健康度、`rent.py` 毛净回报五档坐标、`holding.py` 持有全成本共 3 条命令实跑验证后收录；该技能 README 与根 `README.en.md` 已登记。
 
 ## [v1.15.0] — 2026-10-28
 
